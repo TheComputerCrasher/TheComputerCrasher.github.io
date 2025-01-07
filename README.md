@@ -7,7 +7,7 @@ Nutshell.setOptions({
 });
 </script>
 
-# Welcome!
+# Welcome! 
 This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. 
 
 # Shoutouts
