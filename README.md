@@ -11,7 +11,7 @@ Nutshell.setOptions({
 This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. 
 
 # Shoutouts
-* Shoutout to my brother [:judoanimates](https:/youtube.com/@judoanimates)
+* Shoutout to my brother [:judoanimates](https://youtube.com/@judoanimates)
 * Shoutout to my online friends who used to be on [:Scratch](https://scratch.mit.edu)
 * Shoutout to all the other people I know IRL, who I can't link to or name here for obvious reasons
 
