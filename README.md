@@ -16,5 +16,5 @@ This is a website I made just to mess around with random internet stuff. Nothing
 * Shoutout to all the other people I know IRL, who I can't link to or name here for obvious reasons
 
 # Credits
-This site was built using [:GitHub Pages](https://pages.github.com).
-This site uses Nicky Case's [:Nutshell tool](https://ncase.me/nutshell/#WhatIsNutshell) to make my links look super cool.
+* This site was built using [:GitHub Pages](https://pages.github.com).
+* This site also uses Nicky Case's [:Nutshell tool](https://ncase.me/nutshell/#WhatIsNutshell) to make my links look super cool.
