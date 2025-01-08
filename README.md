@@ -9,7 +9,6 @@ Nutshell.setOptions({
 
 # Welcome!
 This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. (Although that may change in the future...)
-Click on the headings to expand the other parts of this page!
 
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/LK7eZHzk460)
