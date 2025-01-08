@@ -13,7 +13,7 @@ This is a website I made just to mess around with random internet stuff. Nothing
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/LK7eZHzk460).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
-* Shoutout to all the people who made profile pictures for me! judoanimates, [a digital drawing of me, made by my brother](files/pfp.png) sparkzicat, [another picture of me, drawn by my friend Sage](files/Sage-PFP.png), and Piper_Mccloud. [a third picture of me, drawn by my friend Piper](files/Piper-PFP.png)
+* Shoutout to all the people who made profile pictures for me! [judoanimates](files/pfp.png), [sparkzicat](files/Sage-PFP.png), and [Piper_Mccloud](files/Piper-PFP.png).
 * Shoutout to everyone I know IRL, who I can't link to or name here for obvious reasons.
 
 # Credits
