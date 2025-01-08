@@ -9,11 +9,13 @@ Nutshell.setOptions({
 
 # Welcome!
 This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. (Although that may change in the future...)
+Want me to add something to the website? Go to the [discussion board for this project](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/discussions) on [:GitHub](https://en.m.wikipedia.org/wiki/GitHub) and ask! 
+(If you don't have a GitHub account, you can make one for free [here](https://github.com/signup).)
 
 # Shoutouts
-* Shoutout to my brother [:judoanimates](https://youtu.be/LK7eZHzk460).
+* Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
-* Shoutout to all the people who made profile pictures for me! [judoanimates](files/pfp.png), [sparkzicat](files/Sage-PFP.png), and [Piper_Mccloud](files/Piper-PFP.png).
+* Shoutout to all the people who made profile pictures for me! judoanimates, ![:a drawing of me made by judoanimates](https://github.com/TheComputerCrasher/files/pfp.png?raw=true), sparkzicat, ![:a drawing of me made by sparkzicat](https://github.com/TheComputerCrasher/files/Sage-PFP.png?raw=true), and Piper_Mccloud. ![:a drawing of me made by Piper_Mccloud](https://github.com/TheComputerCrasher/files/Piper-PFP.png?raw=true)
 * Shoutout to everyone I know IRL, who I can't link to or name here for obvious reasons.
 
 # Credits
