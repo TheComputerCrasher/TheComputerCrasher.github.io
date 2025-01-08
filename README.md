@@ -21,43 +21,33 @@ This is a website I made just to mess around with random internet stuff. Nothing
 
 # : Secret
 Ooh, you found a secret! Wonder where this leads...
-[:Enter](#Cave)
-[:Don't enter](#Boring)
+You can [:enter a mysterious cave](#Cave), or [:not enter it at all](#Boring).
 
 # :x Cave
 You enter a mysterious cave. There are three tunnels in the cave walls, marked by some unreadable ancient symbols. Of course, you still have the option to leave.
-Which tunnel do you enter?
-[:Left](#EntranceLeft)
-[:Middle](#EntranceMiddle)
-[:Right](#EntranceRight)
-[:Leave](#Boring)
+You can enter the [:left tunnel](#EntranceLeft), the [:middle tunnel](#EntranceMiddle), the [:right tunnel](#EntranceRight), or you can just [:leave](#Boring).
 
 # :x Entrance
 You head back to the room where you entered the cave. The three tunnels are still here, waiting for you. The cave's entrance shines with the outside sunlight.
-Which tunnel do you enter?
-[:Left](#EntranceLeft)
-[:Middle](#EntranceMiddle)
-[:Right](#EntranceRight)
-[:Leave](#Boring)
+You can enter the [:left tunnel](#EntranceLeft), the [:middle tunnel](#EntranceMiddle), the [:right tunnel](#EntranceRight), or you can just [:leave](#Boring).
 
 # :x Boring
 You decide to leave. It turned out to be a very boring choice! Why in the world did you do that?
-[:Enter again](#Cave)
+Maybe [:enter the cave again](#Cave)?
 
 # :x Entrance Left
 You arrive in a room full of monsters! ...Luckily, it seems like someone else already defeated all of them, so you're safe. 
 There are only two tunnels in this room: the one you came from, and one that leads to a new room. Which way do you go?
-[:Go back](#Entrance)
-[:Enter the next room](#LeftContinued)
+You can [:go back](#Entrance) or [:enter the next room](#LeftContinued).
 
 # :x Entrance Middle
 You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
-[:Go back](#Entrance)
+[:Go back](#Entrance).
 
 # :x Entrance Right
 You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
-[:Go back](#Entrance)
+[:Go back](#Entrance).
 
 # :x Left (Continued)
 You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
-[:Go back](#EntranceLeft)
+[:Go back](#EntranceLeft).
