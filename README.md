@@ -39,18 +39,19 @@ You decide to leave. It turned out to be a very boring choice! Why in the world 
 Maybe [:enter the cave again](#Cave)?
 
 # :x Entrance Left
-You arrive in a room full of monsters! ...Luckily, it seems like someone else already defeated all of them, so you're safe. 
+You arrive in a room full of monsters! ...Luckily, a giant green owl already defeated all of them, so you're safe. 
+![Duo, the mascot of Duolingo, stares at you menacingly](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Duo.png?raw=true)
 There are only two tunnels in this room: the one you came from, and one that leads to a new room. Which way do you go?
 You can [:go back](#Entrance) or [:enter the next room](#LeftContinued).
 
 # :x Entrance Middle
-You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter this room, but there's nothing here! It seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#Entrance).
 
 # :x Entrance Right
-You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter this room, but there's nothing here! It seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#Entrance).
 
 # :x Left (Continued)
-You enter this room, but there's nothing here! It almost seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter this room, but there's nothing here! It seems like the cave's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#EntranceLeft).
