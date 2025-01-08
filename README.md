@@ -11,9 +11,10 @@ Nutshell.setOptions({
 This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. (Although that may change in the future...)
 
 # Shoutouts
-* Shoutout to my brother [:judoanimates](https://youtu.be/LK7eZHzk460)
-* Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons
-* Shoutout to all the people I know IRL, who I can't link to or name here for obvious reasons
+* Shoutout to my brother [:judoanimates](https://youtu.be/LK7eZHzk460).
+* Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
+* Shoutouts to all the people who made profile pictures for me! [:judoanimates](files/pfp.png), [:sparkzicat](files/Sage-PFP.png), and [:Piper_Mccloud](files/Piper-PFP.png).
+* Shoutout to everyone I know IRL, who I can't link to or name here for obvious reasons.
 
 # Credits
 * This site is built and hosted using [:GitHub Pages](https://pages.github.com).
