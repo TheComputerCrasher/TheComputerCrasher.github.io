@@ -13,10 +13,22 @@ Want me to add something to the website? Go to the [discussion board for this pr
 (If you don't have a GitHub account, you can make one for free [here](https://github.com/signup).)
 Or, since nobody seems to want to use the fancy way, you can just ask me personally to add something new to the site.
 
+# Super Paper Mario stuff
+Some of you might just be here for my Super Paper Mario stuff. If so, here are the links (more coming soon hopefully!):
+* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor)
+* [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
+
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
-* Shoutout to all the people who made profile pictures for me! judoanimates, ![a drawing of me made by judoanimates](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/pfp.png?raw=true) sparkzicat, ![a drawing of me made by sparkzicat](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Sage-PFP.png?raw=true) and Piper_Mccloud. ![a drawing of me made by Piper_Mccloud](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Piper-PFP.png?raw=true)
+* Shoutout to all the people who made profile pictures for me:
+* judoanimates,
+<img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/pfp.png?raw=true" alt="a drawing of me made by judoanimates" width="250">
+* sparkzicat,
+<img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Sage-PFP.png?raw=true" alt="a drawing of me made by sparkzicat" width=250>
+* and Piper_Mccloud.
+<img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Piper-PFP.png?raw=true" alt="a drawing of me made by Piper_Mccloud" width=250>
+
 * Shoutout to everyone I know IRL, who I can't link to or name here for obvious reasons.
 
 # Credits
