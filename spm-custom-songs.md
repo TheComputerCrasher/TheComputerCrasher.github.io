@@ -1,18 +1,23 @@
 # How to add custom songs to Super Paper Mario
 
-## First, you need to download some stuff. 
-Download [Dolphin Emulator](https://dolphin-emu.org/download/) (if you don't have it installed already), the [Super Paper Mario HD Music mod](https://drive.google.com/file/d/1XHvVyVl5yz8epFRV66vWjbL7cuMbxGbQ), and a [Super Paper Mario ROM](https://myrient.erista.me/files/Redump/Nintendo%20-%20Wii%20-%20NKit%20RVZ%20[zstd-19-128k]/Super%20Paper%20Mario%20%28USA%29%20%28Rev%202%29.zip). You also need to download the song you want as a music file (.mp3, .wav, or .ogg). If you want a song from a YouTube video, I recommend using [yt-dlp](https://ytdlp.online/). 
+## Prerequisites 
+For this tutorial, you will need to download and set up [Dolphin Emulator](https://dolphin-emu.org/download/) if you don't have it installed already, download the [Super Paper Mario HD Audio mod](https://youtu.be/IvLNpXvohTw),* and get a Super Paper Mario ROM file. You can either dump a legally-obtained game from a real Wii using the [Homebrew Channel](https://wiibrew.org/wiki/Homebrew_Channel), or you can find a ROM online somewhere.
 
-## Then you have to set up the game and the emulator it runs on. (Skip this step if you already have Dolphin installed.)
-Start up Dolphin Emulator by unzipping the zip folder and double-clicking the file called "Dolphin.exe" (or the usual type of executable/app file if you're not using Windows). If you haven't already, Dolphin will ask you to pick a location to store your games. I recommend making a new folder called "ROMs" that you can place all your emulator games into. Once you've decided where to put your ganes, put your Super Paper Mario ROM into that folder. 
+You also need to have the song(s) you want to add as music files (MP3, WAV, or OGG). If you want a song from a YouTube video, I recommend either [yt-dlp](https://ytdlp.online/) (more options) or [CNVMP3](https://cnvmp3.com) (easier to use).
 
-## After you set up Dolphin, you need to use the HD Audio mod to easily change the in-game music.
-Unzip the HD Audio mod's folder and remember where you put the contents. Then go back to Dolphin, right-click on Super Paper Mario, and select "Start with Riivolution Patches". Dolphin will tell you to find an .xml file, so go to the HD Audio mod folder → Riivolution → SPMHDSound.xml. Choose "Enabled" from the dropdown menu, click "save as preset", give it a title of your choosing, and save this to your Dolphin games folder. 
+\* Note: The HD Audio mod is not *technically* required, but it makes this process a lot easier. For example, you don't need to extract your ROM and you don't have to make your songs double-speed (which would make it much harder to edit in the BRSTM maker).
 
-## Now, you have to convert your music into a format the game understands. 
-Super Paper Mario uses .brstm files for its music, and most computers don't recognize that file type. Thankfully, some people on the internet have made it easy for us to change normal music files to .brstm.
+## After you set up Dolphin, you need to use the HD Audio mod to change the original music to your custom music.
+Unzip the HD Audio mod and take note of where you put its folder. Then go back to Dolphin, right-click on Super Paper Mario, and select "Start with Riivolution Patches". 
 
-Go to [mu-wave BRSTM Maker](https://kazuki-4ys.github.io/web_apps/mu-wave/), click the big button in the center of the screen to upload your song, and optionally drag the top-right arrow around to trim the audio. If you're changing background music, make sure to check the "Loop?" checkbox and set the loop's starting point by dragging the top-left arrow. Once you're satisfied, download the .brstm file and give it a temporary name.
+Dolphin will then tell you to find an XML file. Go to your HD Audio mod folder and select riivolution/SPMHDSound.xml. Choose "Enabled" from Dolphin's dropdown menu, click "save as preset", give it a title of your choosing, and save the resulting JSON file to your Dolphin ROMs folder.
+
+## Now you have to convert your music into a format the game understands. 
+Super Paper Mario uses BRSTM files for its music, and most computers don't recognize that file type. Thankfully, some people on the internet have made it easy for us to change common music files to BRSTM.
+
+Go to [mu-wave BRSTM Maker](https://kazuki-4ys.github.io/web_apps/mu-wave/), click the big button in the center of the screen to upload your song, and optionally drag the arrows around to trim the audio. If you're changing background music, make sure to check the "Loop?" checkbox and set the loop's starting point by dragging the top-left arrow. Once you're satisfied, download the BRSTM file and give it a temporary name.
 
 ## Time to finally put your custom music into the game!
-Use [Nikku BRSTM Player](https://kenrick95.github.io/nikku/) to play the .brstm files in the "SPMHDAudio" folder of the HD Audio mod. Once you find the song you want to replace, change your custom song's filename to the EXACT filename of the original song, move your custom song to the "SPMHDAudio" folder, and replace the original song! If you've done everything correctly, you should now be able to start the game through your custom-named game file in Dolphin and listen to your custom music! You can also easily play with the default music by starting the game without the Riivolution patch or changing the setting back to "Disabled".
+Use [Nikku BRSTM Player](https://kenrick95.github.io/nikku/) to play the BRSTM files in the "SPMHDAudio" folder of the HD Audio mod. Once you find the song you want to replace, change your song's filename to the EXACT filename of the original song, copy your song to the "SPMHDAudio" folder, and choose to replace the original song. Repeat this step as many times as you need to build your custom soundtrack.
+
+If you've done everything correctly, you should now be able to start the game through your custom-named JSON and listen to your custom music! You can also easily revert back to the default music by starting the game without the Riivolution patch or changing the setting back to "Disabled".
