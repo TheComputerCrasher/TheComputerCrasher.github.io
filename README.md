@@ -17,6 +17,7 @@ Or, since nobody seems to want to use the fancy way, you can just ask me persona
 Some of you might just be here for my Super Paper Mario stuff. If so, here are the links (more coming soon hopefully!):
 * [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor)
 * [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
+* [Super Paper Mario custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
 
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
