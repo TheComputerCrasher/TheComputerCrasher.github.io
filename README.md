@@ -22,11 +22,12 @@ Some of you might just be here for my Super Paper Mario stuff. If so, here are t
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
-* Shoutout to all the people who made profile pictures for me: [judoanimates](https://www.youtube.com/@judoanimates), sparkzicat, and Piper_Mccloud.
+* Shoutout to all the people who made profile pictures for me: [judoanimates](https://www.youtube.com/@judoanimates), sparkzicat, Piper_Mccloud, and [1238-Bit](https://youtube.com/@1238bit).
 * Here are their pictures of me in order: <br>
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/pfp.png?raw=true" alt="a drawing of me made by judoanimates" width="200">
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Sage-PFP.png?raw=true" alt="a drawing of me made by sparkzicat" width=200>
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Piper-PFP.png?raw=true" alt="a drawing of me made by Piper_Mccloud" width=200>
+<img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/1238-Bit_PFP.png?raw=true" alt="a drawing of me made by 1238-Bit" width=200>
 
 * Shoutout to everyone I know IRL, who I can't link to or name here for obvious reasons.
 
