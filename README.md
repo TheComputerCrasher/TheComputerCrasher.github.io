@@ -35,6 +35,9 @@ Some of you might just be here for my Super Paper Mario stuff. If so, here are t
 * This site is built and hosted using [:GitHub Pages](https://pages.github.com).
 * This site also uses Nicky Case's [:Nutshell tool](https://ncase.me/nutshell/#WhatIsNutshell&cut=4) to make my links look super cool.
 
+# Give me an internet if you so choose
+<a href='http://internetometer.com/give/51118'><img src='http://internetometer.com/image/51118.png'/></a>
+
 # : Secret
 Ooh, you found a secret! Wonder where this leads...
 You can [:enter a mysterious maze](#Maze), or [:not enter it at all](#Boring).
