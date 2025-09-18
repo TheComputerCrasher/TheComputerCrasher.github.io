@@ -1,0 +1,453 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'BlitzMain';
+    src: url(media/BlitzMain.otf);
+}
+
+@font-face {
+    font-family: 'BlitzBold';
+    src: url(media/BlitzBold.otf);
+}
+
+/* main styles */
+html {
+    background-color: #008024;
+}
+
+header {
+    text-align: center;
+    font-size: 2em;
+}
+
+html,
+form input,
+select,
+textarea {
+    font-family: 'BlitzMain', 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+h1,
+h2,
+header,
+thead,
+body>footer,
+table>caption {
+    font-family: 'BlitzBold', Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+main h1 {
+    font-size: 3em;
+}
+
+main h2 {
+    font-size: 2em;
+}
+
+main p {
+    font-size: 1.5em;
+}
+
+header img {
+    float: left;
+    width: 20%;
+    height: auto;
+}
+
+nav>ul {
+    list-style-type: square;
+    margin: 0px;
+    padding: 0px;
+}
+
+a {
+    color: teal;
+    text-decoration: none;
+}
+
+header a,
+header a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+nav a {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+    background-color: #ff9600;
+    line-height: 2.8em;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 20px;
+}
+
+main {
+    padding: 10px;
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+body>footer {
+    background-color: #ff9600;
+    color: black;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px;
+    clear: both;
+}
+
+iframe {
+    border: none;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* (9/16)% for YouTube's 16:9 aspect ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Skip To Content styles*/
+.skip-to-content {
+    background: #ff9600;
+    color: teal;
+    left: 50%;
+    position: absolute;
+    transform: translateY(-100px);
+}
+
+.skip-to-content:focus {
+    transform: translateY(0%);
+    transition: transform 0.2s;
+}
+
+
+/* input focus styles */
+input:focus,
+select:focus,
+textarea:focus {
+    background-color: rgb(203, 203, 254);
+}
+
+input#zip:focus:valid,
+input#phone:focus:valid,
+input#email:focus:valid {
+    background: rgb(209, 252, 209) url(media/valid.svg) no-repeat bottom right;
+    background-size: contain;
+}
+
+input#zip:focus:invalid,
+input#phone:focus:invalid,
+input#email:focus:invalid {
+    background: rgb(255, 199, 202) url(media/invalid.svg) no-repeat bottom right;
+    background-size: contain;
+}
+
+
+/* flexbox styles */
+div.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    column-width: auto;
+}
+
+figure.imgGallery {
+    box-sizing: border-box;
+    padding: 0 50px;
+    flex: 20%;
+}
+
+figure.imgGallery img {
+    max-height: 190px;
+    width: auto;
+    display: block;
+}
+
+figcaption {
+    font-size: 1.7em;
+}
+
+/* half-width flexbox styles */
+@media only screen and (max-width: 1100px) {
+    div.imgGallery {
+        flex: 48%;
+        max-width: 50%;
+    }
+}
+
+
+
+/* table styles */
+table {
+    border: 10px inset darkgreen;
+    border-collapse: collapse;
+    color: black;
+    width: 100%;
+    text-align: center;
+}
+
+table caption {
+    caption-side: top;
+    background-color: rgb(255, 150, 22);
+}
+
+table thead {
+    background-color: rgb(0, 182, 182);
+    border: 2px solid black;
+    font-family: 'BlitzBold', Impact, 'Arial Narrow Bold', sans-serif;
+}
+
+table tbody {
+    background-color: #2ec950;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: #7bde91;
+}
+
+table th,
+td {
+    border: 1px solid black;
+}
+
+table tfoot {
+    background-color: gold;
+    border: 2px solid black;
+}
+
+table td>img,
+li img,
+h2 img {
+    height: 1.3em;
+    width: auto;
+    margin-right: 2.5px;
+    margin-left: 2.5px;
+    vertical-align: middle;
+}
+
+
+
+/* desktop-only styles */
+@media only screen and (min-width: 769px) {
+    html {
+        background-image: url('media/GrizzcoBackground.svg');
+    }
+
+    nav li {
+        display: block;
+        width: 20%;
+        float: left;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+        color: teal;
+        background-color: #ffbd60;
+        font-size: 1.2em;
+        transition:
+            background-color 0.2s ease-out,
+            color 0.5s ease-out,
+            font-size 0.5s ease;
+    }
+
+    nav a {
+        transition:
+            background-color 0.2s ease-out,
+            color 0.5s ease-out,
+            font-size 0.5s ease;
+    }
+
+    main>img {
+        float: right;
+        width: 25%;
+        height: auto;
+        padding: 5px;
+    }
+
+    body {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+
+    a:hover {
+        color: darkblue;
+        text-decoration: underline;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    fieldset {
+        width: 90%;
+        padding: 5px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    input,
+    select {
+        display: block;
+        position: relative;
+        left: 30%;
+        padding: 5px;
+        height: auto;
+        width: 60%;
+    }
+
+    label {
+        display: block;
+        position: absolute;
+        padding: 5px;
+        width: 30%;
+    }
+
+    input[type=radio] {
+        display: inline;
+        position: inherit;
+        left: 0;
+        width: auto;
+    }
+
+    label.radio {
+        display: inline;
+        position: inherit;
+    }
+
+    input[type=submit],
+    input[type=reset] {
+        display: block;
+        float: left;
+        left: 0;
+        text-align: center;
+        width: 40%;
+        padding: 10px;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 10px;
+    }
+
+    textarea {
+        padding: 10px;
+        margin: 10px;
+    }
+}
+
+
+/* mobile/tablet-only styles */
+@media only screen and (max-width: 768px) {
+    html {
+        background-color: #c9c9c9;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+    }
+
+    nav li {
+        float: none;
+        font-size: x-large;
+        width: 100%;
+    }
+
+    nav a {
+        border-bottom: solid black 1px;
+    }
+
+    div.imgGallery {
+        flex: 100%;
+        max-width: 100%;
+    }
+
+    main>img {
+        display: none;
+    }
+
+    figcaption {
+        font-size: x-large;
+    }
+
+    table,
+    tbody,
+    tr,
+    td,
+    th {
+        display: block;
+    }
+
+    thead,
+    tfoot,
+    caption {
+        display: none;
+    }
+
+    tbody td {
+        position: relative;
+        padding-left: 40%;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        padding: 5px;
+        width: 40%;
+    }
+
+    form {
+        width: 100%;
+        font-size: large;
+    }
+
+    form {
+        width: 100%;
+        font-size: large;
+    }
+
+    header img {
+        display: none;
+    }
+
+    fieldset {
+        width: 100%;
+        padding: 5px;
+        margin: 0;
+    }
+
+    input,
+    select {
+        position: inherit;
+        display: block;
+        height: 50px;
+        padding: 5px;
+        width: 90%;
+    }
+
+    label {
+        position: inherit;
+        display: block;
+        height: 50px;
+        width: 90%;
+    }
+
+    input[type=submit],
+    input[type=reset] {
+        float: none;
+        width: 90%;
+        margin: 10px;
+        font-size: 1.2em;
+    }
+}

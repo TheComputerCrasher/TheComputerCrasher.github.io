@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Grizzco Industries</title>
+    <link rel="icon" type="image/x-icon" href="media/GrizzcoIcon.ico">
+    <link rel="stylesheet" href="final.css">
+</head>
+
+<body>
+    <a class="skip-to-content" href="#main-content">Skip to content</a>
+    <header>
+        <a href="index.html"><img src="media/GrizzcoLogo.png" alt="Grizzco Industries Logo" height="100"></a>
+        <a href="index.html">
+            <h1>Contact Us</h1>
+        </a>
+    </header>
+    <br>
+    <nav>
+        <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="stats.html">Statistics</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="handbook.html">Employee Handbook</a></li>
+            <li><a href="guide.html">Field Guide</a></li>
+        </ul>
+    </nav>
+    <main id="#main-content">
+        <p>Here at Grizzco Industries, we value all of our hard-working employees. If you have questions, comments, or
+            feedback for us, please fill out the form below.</p>
+        <p>Alternatively, you can message us on the official Grizzco <a
+                href="https://www.youtube.com/@grizzcoindustries">YouTube</a> or <a
+                href="https://twitter.com/GrizzcoSupport">Twitter</a> accounts.</p>
+
+        <form action="example.php" method="post">
+            <fieldset>
+                <p>
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required />
+                </p>
+
+                <p>
+                    <label for="address1">Address 1 *</label>
+                    <input type="text" id="address1" name="address1" required />
+                </p>
+
+                <p>
+                    <label for="address2">Address 2</label>
+                    <input type="text" id="address2" name="address2" />
+                </p>
+
+                <p>
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" required />
+                </p>
+
+                <p>
+                    <label for="state">State *</label>
+                    <select id="state" name="state" required>
+                        <option value="">Choose...</option>
+                        <option value="Splatlands">Splatlands</option>
+                        <option value="Inkadia">Inkadia</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </p>
+
+                <p>
+                    <label for="zip">Zip *</label>
+                    <input type="text" id="zip" name="zip" placeholder="12345(-6789)" pattern="^\d{5}(-\d{4})?$"
+                        required />
+                </p>
+
+                <p>
+                    <label for="phone">Phone *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required
+                        pattern="\(\d{3}\)\s\d{3}-\d{4}" />
+                </p>
+
+                <p>
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required />
+                </p>
+
+                <p>
+                    <label for="bdate">Birthdate *</label>
+                    <input type="date" id="bdate" name="bdate" required />
+                </p>
+
+                <p>
+                    <label for="referrer">Where did you hear about Grizzco?</label><br>
+                    <select multiple id="referrer" name="referrer">
+                        <option value="Google">Google</option>
+                        <option value="Bing">Bing</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </p>
+
+                <p>
+                    Would you recommend this site to others? <br>
+                    <label for="recommendYes" class="radio">Yes</label>
+                    <input type="radio" id="recommendYes" name="recommend">
+                    <label for="recommendNo" class="radio">No</label>
+                    <input type="radio" id="recommendNo" name="recommend">
+                </p>
+
+                <p>
+                    <label for="comments">Questions/Comments</label>
+                    <br>
+                    <textarea id="comments" name="comments" rows="5" cols="50"></textarea>
+                </p>
+
+                <p>
+                    <label for="submit"></label>
+                    <input id="submit" type="submit" name="submit" value="Submit">
+                </p>
+
+                <p>
+                    <label for="reset"></label>
+                    <input id="reset" type="reset" value="Cancel">
+                </p>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; TheComputerCrasher, 2025. <br>
+            This page was created as the final exam for a web design class at my school.<br>
+            All images and most text on this site are taken from <a href="https://splatoonwiki.org">Inkipedia</a> and
+            are &copy; <a href=https://www.nintendo.com>Nintendo.</a>
+        </p>
+    </footer>
+</body>
+
+
+</html>
