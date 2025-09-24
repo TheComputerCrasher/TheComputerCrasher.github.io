@@ -22,7 +22,7 @@ Want me to add something to the website? Just ask!
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
-* Shoutout to all the people who made profile pictures for me: [judoanimates](https://www.youtube.com/@judoanimates), [:sparkzicat](https://scratch.mit.edu/users/SteichFam), Piper_Mccloud, and [1238-Bit](https://youtube.com/@1238bit).
+* Shoutout to all the people who made profile pictures for me: [judoanimates](https://www.youtube.com/@judoanimates), [Sage/sparkzicat](https://scratch.mit.edu/users/SteichFam), Piper_Mccloud, and [1238-Bit](https://youtube.com/@1238bit).
 * Here are the profile pictures they made for me: <br>
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/pfp.png?raw=true" alt="a drawing of me made by judoanimates" width="200">
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Sage-PFP.png?raw=true" alt="a drawing of me made by sparkzicat" width=200>
