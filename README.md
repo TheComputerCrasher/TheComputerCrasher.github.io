@@ -8,22 +8,22 @@ Nutshell.setOptions({
 </script>
 
 # Welcome!
-This is a website I made just to mess around with random internet stuff. Nothing really important is here yet. (Although that may change in the future...)
-Want me to add something to the website? Go to the [discussion board for this project](https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/discussions) on [:GitHub](https://en.m.wikipedia.org/wiki/GitHub) and ask! 
-(If you don't have a GitHub account, you can make one for free [here](https://github.com/signup).)
-Or, since nobody seems to want to use the fancy way, you can just ask me personally to add something new to the site.
+This is a website I made just to mess around with random internet stuff. Nothing super important is here yet. (Although that may change in the future...)
+Want me to add something to the website? Just ask!
 
-# Super Paper Mario stuff
-Some of you might just be here for my Super Paper Mario stuff. If so, here are the links (more coming soon hopefully!):
+# Super Paper Mario utilities
 * [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor)
 * [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
 * [Super Paper Mario custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
+
+# Web design project: Grizzco business site
+ * [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
 
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
 * Shoutout to all the people who made profile pictures for me: [judoanimates](https://www.youtube.com/@judoanimates), sparkzicat, Piper_Mccloud, and [1238-Bit](https://youtube.com/@1238bit).
-* Here are their pictures of me in order: <br>
+* Here are the profile pictures they made for me: <br>
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/pfp.png?raw=true" alt="a drawing of me made by judoanimates" width="200">
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Sage-PFP.png?raw=true" alt="a drawing of me made by sparkzicat" width=200>
 <img src="https://github.com/TheComputerCrasher/TheComputerCrasher.github.io/blob/main/files/Piper-PFP.png?raw=true" alt="a drawing of me made by Piper_Mccloud" width=200>
@@ -51,7 +51,7 @@ You head back to the room where you entered the maze. The three tunnels are stil
 You can enter the [:left tunnel](#EntranceLeft), the [:middle tunnel](#EntranceMiddle), the [:right tunnel](#EntranceRight), or you can just [:leave](#Boring).
 
 # :x Boring
-You decide to leave. It turned out to be a very boring choice! Why in the world did you do that?
+You decide to leave. It turned out to be very boring! Why in the world did you do that?
 Maybe [:enter the maze again](#Maze)?
 
 # :x Entrance Left
@@ -61,13 +61,13 @@ There are only two tunnels in this room: the one you came from, and one that lea
 You can [:go back](#Entrance) or [:enter the next room](#LeftContinued).
 
 # :x Entrance Middle
-You enter this room, but there's nothing here! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter the middle room, but there's nothing there! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#Entrance).
 
 # :x Entrance Right
-You enter this room, but there's nothing here! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter the right room, but there's nothing there! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#Entrance).
 
 # :x Left (Continued)
-You enter this room, but there's nothing here! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
+You enter the next room, but there's nothing there! It seems like the maze's creator isn't quite finished designing the rooms yet. Maybe come back another time? 
 [:Go back](#EntranceLeft).
