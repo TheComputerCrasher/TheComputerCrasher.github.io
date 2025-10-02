@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+/* main styles */
+html {
+    background-color: slateblue;
+}
+
+a {
+    color: crimson;
+}
 
 /* Skip To Content styles*/
 .skip-to-content {
@@ -42,12 +50,40 @@ input#email:focus:invalid {
 
 /* desktop-only styles */
 @media only screen and (min-width: 769px) {
-/* nothing yet */
+    
+    nav li {
+        display: block;
+        width: 20%;
+        float: left;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+        color: firebrick;
+        background-color: deepskyblue;
+        font-size: 1.2em;
+        transition:
+            background-color 0.2s ease-out,
+            color 0.5s ease-out,
+            font-size 0.5s ease;
+    }
+
+    nav a {
+        transition: background-color 0.2s ease-out, color 0.5s ease-out, font-size 0.5s ease;
+    }
 }
 
 
 
 /* mobile/tablet styles */
 @media only screen and (max-width: 768px) {
-/* nothing yet */
+    nav li {
+        float: none;
+        font-size: x-large;
+        width: 100%;
+    }
+
+    nav a {
+        border-bottom: solid black 1px;
+    }
 }
