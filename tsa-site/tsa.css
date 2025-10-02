@@ -3,8 +3,8 @@
 
 /* Skip To Content styles*/
 .skip-to-content {
-    background: #ff9600;
-    color: teal; /* not the final color */
+    background: blue;
+    color: red; /* not the final colors */
     left: 50%;
     position: absolute;
     transform: translateY(-100px);
