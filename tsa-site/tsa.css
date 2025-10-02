@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+
+/* Skip To Content styles*/
+.skip-to-content {
+    background: #ff9600;
+    color: teal; /* not the final color */
+    left: 50%;
+    position: absolute;
+    transform: translateY(-100px);
+}
+
+.skip-to-content:focus {
+    transform: translateY(0%);
+    transition: transform 0.2s;
+}
+
+
+/* input focus styles */
+input:focus,
+select:focus,
+textarea:focus {
+    background-color: rgb(203, 203, 254); /* not the final color */
+}
+
+input#zip:focus:valid,
+input#phone:focus:valid,
+input#email:focus:valid {
+    background: rgb(209, 252, 209) url(media/valid.svg) /* image not here yet */ no-repeat bottom right;
+    background-size: contain;
+}
+
+input#zip:focus:invalid,
+input#phone:focus:invalid,
+input#email:focus:invalid {
+    background: rgb(255, 199, 202) url(media/invalid.svg) /* image not here yet */ no-repeat bottom right;
+    background-size: contain;
+}
+
+
+
+
+/* desktop-only styles */
+@media only screen and (min-width: 769px) {
+/* nothing yet */
+}
+
+
+
+/* mobile/tablet styles */
+@media only screen and (max-width: 768px) {
+/* nothing yet */
+}
