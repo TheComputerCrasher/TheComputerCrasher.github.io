@@ -64,24 +64,18 @@ textarea:focus {
     background-color: rgb(203, 203, 254);
 }
 
-input#zip:focus:valid,
-input#phone:focus:valid,
-input#email:focus:valid {
+input:focus:valid {
     background: rgb(209, 252, 209) url(media/valid.svg)
         /* image not here yet */
         no-repeat bottom right;
     background-size: contain;
 }
-
-input#zip:focus:invalid,
-input#phone:focus:invalid,
-input#email:focus:invalid {
+input:focus:invalid {
     background: rgb(255, 199, 202) url(media/invalid.svg)
         /* image not here yet */
         no-repeat bottom right;
     background-size: contain;
 }
-
 
 
 /* table styles */
@@ -93,6 +87,7 @@ table#searchTable {
     width: 100%;
     text-align: center;
     border: 2px solid light-dark(black, white);
+    background-color: light-dark(dodgerblue, darkblue);
 }
 
 
