@@ -84,6 +84,18 @@ input#email:focus:invalid {
 
 
 
+/* table styles */
+table#searchInput {
+    width: 100%;
+}
+
+table#searchTable {
+    width: 100%;
+    text-align: center;
+    border: 2px solid light-dark(black, white);
+}
+
+
 
 /* desktop-only styles */
 @media only screen and (min-width: 769px) {
