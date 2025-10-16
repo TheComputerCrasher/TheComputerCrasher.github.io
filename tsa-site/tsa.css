@@ -13,9 +13,9 @@ main {
     background-color: #cc4a3e;
 }
 
-a {
-    text-decoration: none;
-    color: light-dark(cyan, rgb(0, 0, 180));
+main a {
+    text-decoration: underline;
+    color: light-dark(rgb(32, 0, 211), rgb(139, 139, 255));
 }
 
 nav a {
@@ -27,7 +27,7 @@ nav a {
     text-decoration: none;
     text-align: center;
     border-radius: 20px;
-    color: light-dark(rgb(103, 217, 255), rgb(142, 142, 255));
+    color: light-dark(cyan, rgb(0, 0, 180));
 }
 
 nav ul {
@@ -37,7 +37,8 @@ nav ul {
 footer {
     background-color: light-dark(whitesmoke, black);
     color: light-dark(black, white);
-    border-radius: 5px;
+    border-radius: 10px;
+    border-color: gold;
     text-align: center;
 }
 
