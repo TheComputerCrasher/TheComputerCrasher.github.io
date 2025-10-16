@@ -2,37 +2,49 @@
 
 /* main styles */
 html {
-    background-color: slateblue; /* no colors here are final yet!! */
+    color-scheme: light dark;
+    background-color: light-dark(whitesmoke, black);
+    /* no colors here are final yet!! */
 }
 
 main {
     padding: 10px;
     margin-top: 50px;
-    background-color: cornflowerblue;
+    background-color: #cc4a3e;
 }
 
 a {
-    color: crimson;
     text-decoration: none;
+    color: light-dark(cyan, rgb(0, 0, 180));
 }
 
 nav a {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 0px;
     text-decoration: none;
-    color: black;
+    background-color: light-dark(black, white);
     display: block;
-    background-color: brickred;
     line-height: 2.8em;
     text-decoration: none;
     text-align: center;
     border-radius: 20px;
+    color: light-dark(rgb(103, 217, 255), rgb(142, 142, 255));
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+footer {
+    background-color: light-dark(whitesmoke, black);
+    color: light-dark(black, white);
+    border-radius: 5px;
+    text-align: center;
 }
 
 /* Skip To Content styles*/
 .skip-to-content {
-    background: blue;
-    color: red; 
+    background: #012d53;
+    color: #ff5d4f;
     left: 50%;
     position: absolute;
     transform: translateY(-100px);
@@ -54,14 +66,18 @@ textarea:focus {
 input#zip:focus:valid,
 input#phone:focus:valid,
 input#email:focus:valid {
-    background: rgb(209, 252, 209) url(media/valid.svg) /* image not here yet */ no-repeat bottom right;
+    background: rgb(209, 252, 209) url(media/valid.svg)
+        /* image not here yet */
+        no-repeat bottom right;
     background-size: contain;
 }
 
 input#zip:focus:invalid,
 input#phone:focus:invalid,
 input#email:focus:invalid {
-    background: rgb(255, 199, 202) url(media/invalid.svg) /* image not here yet */ no-repeat bottom right;
+    background: rgb(255, 199, 202) url(media/invalid.svg)
+        /* image not here yet */
+        no-repeat bottom right;
     background-size: contain;
 }
 
@@ -70,7 +86,7 @@ input#email:focus:invalid {
 
 /* desktop-only styles */
 @media only screen and (min-width: 769px) {
-    
+
     nav li {
         display: block;
         width: 20%;
@@ -79,8 +95,8 @@ input#email:focus:invalid {
 
     nav a:hover {
         text-decoration: underline;
-        color: firebrick;
-        background-color: deepskyblue;
+        color: rgb(255, 49, 49);
+        background-color: rgb(0, 151, 201);
         font-size: 1.2em;
         transition:
             background-color 0.2s ease-out,
@@ -89,7 +105,10 @@ input#email:focus:invalid {
     }
 
     nav a {
-        transition: background-color 0.2s ease-out, color 0.5s ease-out, font-size 0.5s ease;
+        transition:
+            background-color 0.2s ease-out,
+            color 0.5s ease-out,
+            font-size 0.5s ease;
     }
 }
 
@@ -101,6 +120,7 @@ input#email:focus:invalid {
         float: none;
         font-size: x-large;
         width: 100%;
+
     }
 
     nav a {
