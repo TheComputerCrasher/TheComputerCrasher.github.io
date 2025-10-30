@@ -7,6 +7,7 @@
     <title>TSA Webmaster</title>
     <link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?sz=16&domain_url=https://tsaweb.org">
     <link rel="stylesheet" href="tsa.css">
+    
 </head>
 
 <body>
@@ -14,26 +15,27 @@
     <header>
         <a href="index.html"></a>
         <h1>
-            <a href="index.html">Placeholder Title</a>
+            <a href="index.html">Welcome to the Resource Hub!</a>
         </h1>
     </header>
     <br>
     <nav>
         <ul>
-            <li><a href="a.html">a</a></li>
-            <li><a href="b.html">b</a></li>
-            <li><a href="c.html">c</a></li>
-            <li><a href="d.html">d</a></li>
-            <li><a href="e.html">e</a></li>
+            <li><a href="browse.html">Browse</a></li>
+            <li><a href="highlights.html">Highlights</a></li>
+            <li><a href="form.html">Submit A Resource</a></li>
         </ul>
     </nav>
     <main id="main-content">
         <title>
-            <p>Welcome to the [name] Resource Hub!</p>
+            <p>[name] Resource Hub</p>
         </title>
         <p>This is a place to see and learn more about the various resources available to our community, such as non-profits, support services, and community events. You can <a href=#searchTable>search</a> for a specific resources, <a href=browse.html>browse</a> the available ones, or just look at the <a href="highlights.html">highlights section</a>. You can also <a href="form.html">submit a resource</a> that you would like to be added to this site.</p> <!-- These files don't exist yet so the links are broken! -->
 
+        <input type="text" id="searchInput" onkeyup="tableSearch()" placeholder="Search names...">
+
         <table id="searchTable">
+            <script src="table.js"></script>
             <tr class="header">
                 <th style="width:20%">Name</th>
                 <th style="width:40%">Image</th>
