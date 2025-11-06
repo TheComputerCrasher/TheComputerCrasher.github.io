@@ -4,12 +4,12 @@
 html {
     color-scheme: light dark;
     background-color: light-dark(whitesmoke, black);
-    /* no colors here are final yet!! */
+    /* no colors are final yet!! */
 }
 
 main {
     padding: 10px;
-    margin-top: 50px;
+    margin-top: 60px;
     background-color: #cc4a3e;
 }
 
