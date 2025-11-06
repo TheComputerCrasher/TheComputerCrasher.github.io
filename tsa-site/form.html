@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TSA Webmaster</title>
+    <title>Williamsburg Resource Hub</title>
     <link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?sz=16&domain_url=https://tsaweb.org">
     <link rel="stylesheet" href="tsa.css">
     
@@ -15,7 +15,7 @@
     <header>
         <a href="index.html"></a>
         <h1>
-            <a href="index.html">Welcome to the Resource Hub!</a>
+            <a href="index.html">Welcome to the Williamsburg Resource Hub!</a>
         </h1>
     </header>
     <br>
@@ -28,8 +28,80 @@
     </nav>
     <main id="main-content">
         <title>
-            <p>[name] Resource Hub</p>
-        </title>        
+            <p>Williamsburg Resource Hub</p>
+        </title>
+        <form action="example.php" method="post">
+            <fieldset>
+                <p>
+                    <label for="name">Name of resource*</label>
+                    <input type="text" id="name" name="name" required />
+                </p>
+
+                <p>
+                    <label for="type">Type*</label>
+                    <select id="type" name="type" required="">
+                        <option value="">Choose...</option>
+                        <option value="Non-profit">Non-profit</option>
+                        <option value="Support">Support</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Food bank">Food bank</option>
+                        <option value="Giveaway">Giveaway</option>
+                        <option value="Church">Church</option>
+                        <option value="School">School</option>
+                        <option value="Event">Event</option>
+                    </select>
+
+                <p>
+                    <label for="phone">Phone number*</label>
+                    <input type="text" id="phone" name="phone" placeholder="(123) 456-7890" required pattern="(?:([+][0-9]{1,4})[- ]?)?(?:[(]([0-9]{1,3})[)][- ]?)?([0-9]{1,4})[- ]?([0-9]{1,4})[- ]?([0-9]{1,9})" />
+                </p>
+        
+                <p>
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required />
+                </p>
+        
+                <p>
+                    <label for="bdate">Birthdate</label>
+                    <input type="date" id="bdate" name="bdate" />
+                </p>
+        
+                <p>
+                    <label for="referrer">How did you hear about us?</label><br>
+                    <select multiple id="referrer" name="referrer">
+                        <option value="Search Engine">Search Engine (Google, Bing, DuckDuckGo, etc.)</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </p>
+        
+                <p>
+                    Would you recommend this site to others? <br>
+                    <label for="recommendYes" class="radio">Yes</label>
+                    <input type="radio" id="recommendYes" name="recommend">
+                    <label for="recommendNo" class="radio">No</label>
+                    <input type="radio" id="recommendNo" name="recommend">
+                </p>
+        
+                <p>
+                    <label for="comments">Questions/Comments</label>
+                    <br>
+                    <textarea id="comments" name="comments" rows="5" cols="50"></textarea>
+                </p>
+        
+                <p>
+                    <label for="submit"></label>
+                    <input id="submit" type="submit" name="submit" value="Submit">
+                </p>
+        
+                <p>
+                    <label for="reset"></label>
+                    <input id="reset" type="reset" value="Cancel">
+                </p>
+            </fieldset>
+        </form>
+
     </main>
     <footer>
         <p>This page was made as a project for TSA's 2025 "Webmaster" theme.
