@@ -9,10 +9,11 @@ Nutshell.setOptions({
 
 # Welcome!
 This is a website I made just to mess around with random internet stuff. Nothing super important is here yet. (Although that may change in the future...)
-Want me to add something to the website? Just ask!
+Want me to add something to the site? Just ask!
 
 # Super Paper Mario utilities
-* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor)
+* [Super Paper Mario text editor](https://youtu.be/vpHN_rumHqc) (Native app for major desktop OSes, NOT BY ME)
+* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor) (OLD)
 * [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
 * [Super Paper Mario custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
 
