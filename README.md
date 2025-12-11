@@ -12,8 +12,8 @@ This is a website I made just to mess around with random internet stuff. Nothing
 Want me to add something to the site? Just ask!
 
 # Super Paper Mario utilities
-* [Super Paper Mario text editor](https://youtu.be/vpHN_rumHqc) (Native app for major desktop OSes, NOT BY ME)
-* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor) (OLD)
+* [Super Paper Mario text editor](https://youtu.be/vpHN_rumHqc) (Native app for major desktop OSes by [Luma48](https://github.com/Luma48))
+* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor) (Web version by me, has less features than the app)
 * [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
 * [Super Paper Mario custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
 
