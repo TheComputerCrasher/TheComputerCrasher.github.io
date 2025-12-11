@@ -18,6 +18,11 @@ main a {
     color: gold;
 }
 
+header a {
+    text-decoration: none;
+    color: gold;
+}
+
 nav a {
     text-decoration: none;
     background-color: light-dark(black, white);
@@ -41,6 +46,7 @@ footer {
     border-style: solid;
     text-align: center;
 }
+
 
 /* Skip To Content styles*/
 .skip-to-content {
@@ -96,6 +102,9 @@ table#searchTable {
     background-color: light-dark(dodgerblue, darkblue);
 }
 
+table#searchTable th#row {
+    width: 33%
+}
 
 
 /* desktop-only styles */
@@ -109,8 +118,8 @@ table#searchTable {
 
     nav a:hover {
         text-decoration: underline;
-        color: rgb(255, 49, 49);
-        background-color: rgb(0, 151, 201);
+        color: rgb(255, 0, 0);
+        background-color: rgb(5, 192, 255);
         font-size: 1.2em;
         transition:
             background-color 0.2s ease-out,
@@ -125,6 +134,8 @@ table#searchTable {
             font-size 0.5s ease;
     }
 }
+
+
 
 /* mobile/tablet styles */
 @media only screen and (max-width: 768px) {
