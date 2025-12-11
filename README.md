@@ -12,10 +12,10 @@ This is a website I made just to mess around with random internet stuff. Nothing
 Want me to add something to the site? Just ask!
 
 # Super Paper Mario utilities
-* [Super Paper Mario text editor](https://youtu.be/vpHN_rumHqc) (Native app for major desktop OSes by [Luma48](https://github.com/Luma48))
-* [Super Paper Mario text editor](https://thecomputercrasher.github.io/spm-text-editor) (Web version by me, has less features than the app)
-* [Super Paper Mario custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
-* [Super Paper Mario custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
+* [SPM custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
+* [SPM custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
+* [SPM text editor](https://github.com/Luma48/Flint) (Native app for major desktop OSes by [Luma48](https://github.com/Luma48))
+* [SPM text editor](https://thecomputercrasher.github.io/spm-text-editor) (Web version by me, has less features than the app)
 
 # Web design project: Grizzco business site
  * [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
