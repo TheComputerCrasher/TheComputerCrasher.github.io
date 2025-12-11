@@ -1,21 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TSA Webmaster</title>
+    <title>Williamsburg Resource Hub</title>
     <link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?sz=16&domain_url=https://tsaweb.org">
     <link rel="stylesheet" href="tsa.css">
-    
 </head>
 
 <body>
     <a class="skip-to-content" href="#main-content">Skip to content</a>
     <header>
-        <a href="index.html"></a>
         <h1>
-            <a href="index.html">Welcome to the Resource Hub!</a>
+            <a href="index.html">Welcome to the Williamsburg Resource Hub!</a>
         </h1>
     </header>
     <br>
@@ -27,29 +25,29 @@
         </ul>
     </nav>
     <main id="main-content">
-        <title>
-            <p>[name] Resource Hub</p>
-        </title>
-        <p>This is a place to see and learn more about the various resources available to our community, such as non-profits, support services, and community events. You can <a href=#searchTable>search</a> for a specific resources, <a href=browse.html>browse</a> the available ones, or just look at the <a href="highlights.html">highlights section</a>. You can also <a href="form.html">submit a resource</a> that you would like to be added to this site.</p> <!-- These files don't exist yet so the links are broken! -->
+        <p>This is a place to see and learn more about the various resources available to our community, such as non-profits, support services, and community events. You can <a href="#searchTable">search</a> for a specific resources, <a href="browse.html">browse</a> the available ones, or just look at the <a href="highlights.html">highlights section</a>. You can also <a href="form.html">submit a resource</a> that you would like to be added to this site.</p>
 
         <input type="text" id="searchInput" onkeyup="tableSearch()" placeholder="Search names...">
 
         <table id="searchTable">
             <script src="table.js"></script>
+            <tbody>
             <tr class="header">
-                <th style="width:20%">Name</th>
-                <th style="width:40%">Image</th>
-                <th style="width:40%">Description</th>
+                <th scope="row">Name</th>
+                <th scope="row">Image</th>
+                <th scope="row">Description</th>
             </tr>
             <tr>
                 <td>Placeholder Name</td>
                 <td>Placeholder Image</td>
                 <td>Placeholder Description</td>
             </tr>
+            </tbody>
         </table>
     </main>
     <footer>
-        <p>This page was made as a project for TSA's 2025 "Webmaster" theme.
+        <p>
+            This page was made as a project for TSA's 2025 "Webmaster" theme.
         </p>
     </footer>
 </body>
