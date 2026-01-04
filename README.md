@@ -20,6 +20,9 @@ Want me to add something to the site? Just ask!
 # Web design project: Grizzco business site
  * [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
 
+# Random daily posts
+<div class='sk-ww-youtube-community' data-embed-id='25639384'></div><script src='https://widgets.sociablekit.com/youtube-community/widget.js' defer></script>
+
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
 * Shoutout to my online friends who used to be on [:Scratch](https://en.m.wikipedia.org/wiki/Scratch_(programming_language)) before they left for various reasons. 
