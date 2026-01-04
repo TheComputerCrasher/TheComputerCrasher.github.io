@@ -21,7 +21,7 @@ Want me to add something to the site? Just ask!
  * [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
 
 # Random daily posts
-<div class='sk-ww-youtube-community' data-embed-id='25639384'></div><script src='https://widgets.sociablekit.com/youtube-community/widget.js' defer></script>
+<div class="sk-ww-youtube-channel-videos" data-embed-id="25639390"></div><script src="https://widgets.sociablekit.com/youtube-channel-videos/widget.js" defer></script>
 
 # Shoutouts
 * Shoutout to my brother [:judoanimates](https://youtu.be/E6M1RSF_BKo).
