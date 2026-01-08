@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Williamsburg Resource Hub</title>
-    <link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?sz=16&domain_url=https://tsaweb.org">
+    <link rel="icon" type="image/x-icon" href="https://www.google.com/s2/favicons?domain_url=https://tsaweb.org">
     <link rel="stylesheet" href="tsa.css">
 </head>
 
@@ -25,25 +25,20 @@
         </ul>
     </nav>
     <main id="main-content">
-        <p>This is a place to see and learn more about the various resources available to our community, such as non-profits, support services, and community events. You can <a href="#searchTable">search</a> for a specific resources, <a href="browse.html">browse</a> the available ones, or just look at the <a href="highlights.html">highlights section</a>. You can also <a href="form.html">submit a resource</a> that you would like to be added to this site.</p>
-
+        <p>
+            This is a place to see and learn more about the various resources available to our community, such as non-profits, support services, and community events. You can <a href="#searchTable">search</a> for a specific resource, <a href="browse.html">browse</a> the available ones, or just look at the <a href="highlights.html">highlights</a>. You can also <a href="form.html">submit a resource</a> that you would like to be added to this site.
+        </p>
+        <script src="tablesearch.js"></script>
         <input type="text" id="searchInput" onkeyup="tableSearch()" placeholder="Search names...">
+        <div id="table-container"></div>
+        <script>
+            fetch('table.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('table-container').innerHTML = data;
+                });
+        </script>
 
-        <table id="searchTable">
-            <script src="table.js"></script>
-            <tbody>
-            <tr class="header">
-                <th scope="row">Name</th>
-                <th scope="row">Image</th>
-                <th scope="row">Description</th>
-            </tr>
-            <tr>
-                <td>Placeholder Name</td>
-                <td>Placeholder Image</td>
-                <td>Placeholder Description</td>
-            </tr>
-            </tbody>
-        </table>
     </main>
     <footer>
         <p>

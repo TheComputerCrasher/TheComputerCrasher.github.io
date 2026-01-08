@@ -3,8 +3,8 @@
 /* main styles */
 html {
     color-scheme: light dark;
-    background-color: light-dark(whitesmoke, black);
-    /* no colors are final yet!! */
+    background-color: light-dark(rgb(0, 175, 184), rgb(44, 44, 44));
+    /* no colors are final yet! */
 }
 
 main {
@@ -25,13 +25,13 @@ header a {
 
 nav a {
     text-decoration: none;
-    background-color: light-dark(black, white);
+    background-color: light-dark(rgb(44, 44, 44), rgb(255, 212, 38));
     display: block;
     line-height: 2.8em;
     text-decoration: none;
     text-align: center;
     border-radius: 20px;
-    color: light-dark(cyan, rgb(0, 0, 180));
+    color: light-dark(cyan, rgb(0, 0, 122));
 }
 
 nav ul {
@@ -39,10 +39,10 @@ nav ul {
 }
 
 footer {
-    background-color: light-dark(whitesmoke, black);
+    background-color: light-dark(dodgerblue, darkblue);
     color: light-dark(black, white);
     border-radius: 10px;
-    border-color: gold;
+    border-color: light-dark(gold, white);
     border-style: solid;
     text-align: center;
 }
@@ -82,7 +82,7 @@ input:focus:invalid#formInput {
 }
 
 input#searchInput {
-    margin-left: 50%;
+    width: 100%;
 }
 
 input {
@@ -102,8 +102,12 @@ table#searchTable {
     background-color: light-dark(dodgerblue, darkblue);
 }
 
-table#searchTable th#row {
-    width: 33%
+table tr {
+    width: 33.3%
+}
+
+table img {
+    width: 33%;
 }
 
 
