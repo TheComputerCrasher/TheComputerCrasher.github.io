@@ -39,7 +39,7 @@ Want me to add something to the site? Just ask!
 # Give me an internet if you so choose
 <a href='http://internetometer.com/give/51118'><img src='http://internetometer.com/image/51118.png'/></a>
 
-# : Secret
+# :Secret
 Ooh, you found a secret! Wonder where this leads...
 You can [:enter a mysterious maze](#Maze), or [:not enter it at all](#Boring).
 
