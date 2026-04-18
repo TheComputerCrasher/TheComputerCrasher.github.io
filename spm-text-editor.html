@@ -13,6 +13,8 @@
     /* Base styles */
     body, #output { font-family: 'SPMText', sans-serif; }
     body { display: flex; flex-direction: column; align-items: center; padding: 2rem; background: #f4f4f4; }
+    .controls { width: 80%; display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .controls button { font-family: monospace; font-size: 0.95rem; padding: 0.45rem 0.75rem; cursor: pointer; }
     textarea { width: 80%; height: 200px; margin-bottom: 1rem; font-family: monospace; font-size: 1rem; white-space: pre-wrap; word-wrap: break-word; resize: both; }
     #output { width: 80%; background: white; padding: 1rem; white-space: pre-wrap; cursor: pointer; resize: both; overflow: auto; box-sizing: border-box; border: 4px solid black; }
 
@@ -42,14 +44,20 @@
 </head>
 <body>
   <h1>Super Paper Mario Text Preview</h1>
+  <div class="controls">
+    <button id="importBtn" type="button">Import .txt</button>
+    <button id="exportBtn" type="button">Export .txt</button>
+    <input id="fileInput" type="file" accept=".txt,text/plain" hidden>
+  </div>
   <textarea id="input" placeholder="Use tags from Super Paper Mario's text files! This editor supports <shake>, <wave>, <scale [size]>, <dynamic 3>, <wait [ms]>, <col [hex]>, <fairy>, <fairy2>, <kanban>, <system>, <diary>, <clear>, <majo>, and <icon [button]>."></textarea>
   <div id="output" title="Click to advance"></div>
   <script>
     const inputArea=document.getElementById('input'), outputDiv=document.getElementById('output');
+    const importBtn=document.getElementById('importBtn'), exportBtn=document.getElementById('exportBtn'), fileInput=document.getElementById('fileInput');
     let pages=[], fairyFlags=[], kanbanFlags=[], systemFlags=[], diaryFlags=[], clearFlags=[], majoFlags=[], currentPage=0;
 
     function createSpan(char, effects, scale, dyn, delay) {
-      let node=document.createTextNode(char===' ' ? '\u00A0':char);
+      let node=document.createTextNode(char==='\u0000' ? ' ':char);
       if(effects.includes('shake')){ const s=document.createElement('span');s.className='shake-letter';s.style.animationDelay=delay+'ms';s.appendChild(node);node=s; }
       if(effects.includes('wave')){ const w=document.createElement('span');w.className='wave-letter';w.style.animationDelay=delay+'ms';w.appendChild(node);node=w; }
       if(scale!==1){ const sc=document.createElement('span');sc.style.display='inline-block';sc.style.fontSize=scale+'em';sc.appendChild(node);node=sc; }
@@ -362,36 +370,34 @@ if (iconMatch) {
 
     
   function generatePages(text) {
-  // Add this at the top of generatePages(text), right after the "{"
 {
-  // Automatically wrap consecutive blocks of only‐tag lines with <ph>…</ph>
-let lines = text.split('\n');
-for (let i = 0; i < lines.length; i++) {
-  // If we find a line that’s “only tags,” start of a potential block:
-  if (/^(\s*<\s*\/?\s*(?:shake|wave|scale|dynamic|wait|col|fairy|kanban|system|diary|clear|majo|icon)\b[^>]*>\s*)+$/i.test(lines[i])) {
-    // Determine the end of this consecutive block of only‐tag lines
-    let start = i;
-    let end = i;
-    while (
-      end + 1 < lines.length &&
-      /^(\s*<\s*\/?\s*(?:shake|wave|scale|dynamic|wait|col|fairy|kanban|system|diary|clear|majo|icon)\b[^>]*>\s*)+$/i.test(lines[end + 1])
-    ) {
-      end++;
+  // Remove pure tag lines from visual output while preserving their effects.
+  // Tag-only lines are merged into neighboring content so they do not render blank rows.
+  const rawLines = text.split("\n");
+  const compactLines = [];
+  let pendingTagOnly = "";
+
+  rawLines.forEach(rawLine => {
+    const lineForCheck = rawLine.replace(/\u0000/g, "");
+    if (/^(?:\s*<[^>]+>\s*)+$/.test(lineForCheck)) {
+      pendingTagOnly += rawLine.trim();
+      return;
     }
-    // Append <ph> onto the line *before* this block (if it exists)
-    if (start > 0) {
-      lines[start - 1] = lines[start - 1] + '<ph>';
+
+    if (pendingTagOnly) {
+      compactLines.push(pendingTagOnly + rawLine);
+      pendingTagOnly = "";
+    } else {
+      compactLines.push(rawLine);
     }
-    // Prepend </ph> onto the line *after* this block (if it exists)
-    if (end + 1 < lines.length) {
-      lines[end + 1] = '</ph>' + lines[end + 1];
-    }
-    // Advance i to skip over the rest of this block
-    i = end;
+  });
+
+  if (pendingTagOnly) {
+    if (compactLines.length > 0) compactLines[compactLines.length - 1] += pendingTagOnly;
+    else compactLines.push(pendingTagOnly);
   }
-}
-// Re‐join so the rest of generatePages sees the inserted <ph>…</ph>
-text = lines.join('\n');
+
+  text = compactLines.join("\n");
 
 
 // Insert newline before other text whenever an underscore‐word is followed by non‐space
@@ -412,50 +418,42 @@ text = text
   })
   .join('\n');
 
-/*
-// Resolve all <icon …> tags into text so their underscores won’t split pages
-text = text.replace(/<\s*icon\s+([^\s>]+)[^>]*>/gi, (match, arg) => {
-  const upper = arg.toUpperCase();
-  let displayText;
 
-  if (upper.startsWith('STICK')) {
-    displayText = '✚';
-  } else if (upper.startsWith('AC_STAR')) {
-    displayText = 'Star';
-  } else if (upper === 'PAD_PLUS') {
-    displayText = '⊕';
-  } else if (upper === 'PAD_MINUS') {
-    displayText = '⊖';
-  } else if (upper === 'PAD_1') {
-    displayText = '①';
-  } else if (upper === 'PAD_2') {
-    displayText = '②';
-  } else if (upper === 'PAD_A') {
-    displayText = 'Ⓐ';
-  } else if (upper.startsWith('AC_KOURA')) {
-    displayText = 'Shell';
-  } else if (upper.startsWith('AC_ON')) {
-    displayText = 'Circle';
-  } else if (upper === 'HM') {
-    displayText = '♡';
-  } else if (upper.startsWith('AC_KINOKO')) {
-    displayText = 'Mushroom';
-  } else if (upper.startsWith('CRYSTAL')) {
-  displayText = '    [Merlumina\'s face]';
-  } else if (upper.startsWith('PAD_') && upper.length > 4) {
-    return upper.charAt(4);
-  } else if (upper === 'PAD') {
-    displayText = 'Wii Remote';
-  } else {
-    return upper.charAt(0);
-  }
+const underscoreWordRegex = /\b(?!PAD_|AC_)\w+_\w*\b/;
+const pageBreakToken = "[[SPM_PAGE_BREAK]]";
 
-  return displayText;
+function isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, tagStart, tagEnd) {
+  const left = fullText.slice(0, tagStart).replace(/(?:[\s\u0000]|<[^>]+>)*$/g, "");
+  const right = fullText.slice(tagEnd).replace(/^(?:[\s\u0000]|<[^>]+>)*/g, "");
+  const leftAdjacentUnderscore = /\b(?!PAD_|AC_)\w+_\w*$/.test(left);
+  const rightAdjacentUnderscore = /^(?!PAD_|AC_)\w+_\w*\b/.test(right);
+  return leftAdjacentUnderscore || rightAdjacentUnderscore;
+}
+
+// Treat <k> as page breaks unless they are on an underscore line or only separated
+// from an underscore-word by tags/newlines/whitespace.
+text = text.replace(/<\s*k\s*>/gi, (tag, offset, fullText) => {
+  const lineStart = fullText.lastIndexOf("\n", offset) + 1;
+  const nextNewline = fullText.indexOf("\n", offset);
+  const lineEnd = nextNewline === -1 ? fullText.length : nextNewline;
+  const line = fullText.slice(lineStart, lineEnd);
+  const visibleText = line.replace(/<[^>]+>/g, "");
+
+  if (underscoreWordRegex.test(visibleText)) return tag;
+  if (isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, offset, offset + tag.length)) return tag;
+  return pageBreakToken;
 });
-*/
-  
-// Now split only on “real” underscore-words (icons have already been removed)
-const parts = text.split(/(?=(?!PAD_|AC_)\b\w+_\w*\b)/);
+
+// Split on explicit <k>-based breaks and on real underscore-words.
+const parts = [];
+text.split(pageBreakToken).forEach(chunk => {
+  chunk.split(/(?=(?!PAD_|AC_)\b\w+_\w*\b)/).forEach(part => {
+    // If an underscore split happens right after a tag-only line, collapse
+    // that line break so tags do not render as an empty line.
+    const normalizedPart = part.replace(/[\r\n]+([\s\u0000]*(?:<[^>]+>[\s\u0000]*)+)$/g, (_, tags) => tags);
+    if (normalizedPart.replace(/[\s\u0000]+/g, "").length > 0) parts.push(normalizedPart);
+  });
+});
 
 
   // Reset pages & flags
@@ -499,7 +497,32 @@ currentPage = 0;
 }}
     
     function showPage(idx){if(!pages[idx])return;outputDiv.innerHTML='';outputDiv.className='';if(fairyFlags[idx])outputDiv.classList.add('fairy-border');if(kanbanFlags[idx])outputDiv.classList.add('kanban-border');if(systemFlags[idx])outputDiv.classList.add('system-style');if(diaryFlags[idx])outputDiv.classList.add('diary-style');if(clearFlags[idx])outputDiv.classList.add('clear-style');if(majoFlags[idx])outputDiv.classList.add('majo-style');outputDiv.appendChild(pages[idx].cloneNode(true));}
-    function updatePreview(){generatePages(inputArea.value);showPage(0);}inputArea.addEventListener('input',updatePreview);outputDiv.addEventListener('click',()=>{if(currentPage<pages.length-1)showPage(++currentPage);});updatePreview();
+    function updatePreview(){generatePages(inputArea.value);showPage(0);}
+    inputArea.addEventListener('input',updatePreview);
+    outputDiv.addEventListener('click',()=>{if(currentPage<pages.length-1)showPage(++currentPage);});
+    updatePreview();
+    importBtn.addEventListener('click',()=>fileInput.click());
+    fileInput.addEventListener('change',event=>{
+      const file=event.target.files&&event.target.files[0];
+      if(!file)return;
+      const reader=new FileReader();
+      reader.onload=()=>{
+        inputArea.value=String(reader.result||'');
+        updatePreview();
+      };
+      reader.readAsText(file);
+      fileInput.value='';
+    });
+    exportBtn.addEventListener('click',()=>{
+      const blob=new Blob([inputArea.value],{type:'text/plain;charset=utf-8'});
+      const link=document.createElement('a');
+      link.href=URL.createObjectURL(blob);
+      link.download='spm-text.txt';
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(link.href);
+    });
   </script>
 </body>
 </html>
