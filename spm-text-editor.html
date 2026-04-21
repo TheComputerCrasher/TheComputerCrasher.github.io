@@ -21,7 +21,6 @@
     /* Animations */
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     @keyframes dynamicShrink { from { transform: scale(var(--dyn-factor)); } to { transform: scale(1); } }
-    @keyframes shake { 0%{transform:translate(0,0)rotate(0);}20%{transform:translate(-0.025em,-0.025em)rotate(-1deg);}40%{transform:translate(-0.025em,0.025em)rotate(1deg);}60%{transform:translate(0.025em,0.025em)rotate(0);}80%{transform:translate(0.025em,-0.025em)rotate(1deg);}100%{transform:translate(0,0)rotate(-1deg);} }
     @keyframes wave {
       from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
       to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
@@ -29,7 +28,11 @@
     @keyframes rainbow { 0%{border-color:hotpink;}12.5%{border-color:orange;}25%{border-color:yellow;}37.5%{border-color:lawngreen;}50%{border-color:cyan;}62.5%{border-color:lawngreen;}75%{border-color:yellow;}87.5%{border-color:orange;}100%{border-color:hotpink;} }
     
     /* Letter effects */
-    .shake-letter { display:inline-block; animation: shake 0.12s infinite; }
+    .shake-letter {
+      display:inline-block;
+      transform: translate(0, 0);
+      will-change: transform;
+    }
     .wave-letter { display:inline-block; animation: wave 0.9s linear infinite; transform-origin: center; }
     .dynamic-letter { display:inline-block; transform: scale(var(--dyn-factor)); animation: dynamicShrink 0.05s forwards; }
 
@@ -56,9 +59,54 @@
     const importBtn=document.getElementById('importBtn'), exportBtn=document.getElementById('exportBtn'), fileInput=document.getElementById('fileInput');
     let pages=[], fairyFlags=[], kanbanFlags=[], systemFlags=[], diaryFlags=[], clearFlags=[], majoFlags=[], currentPage=0;
 
+    const SHAKE_INTERVAL_MS = 1;
+    const SHAKE_RANGE_EM = 0.1;
+    const SHAKE_LERP = 0.38;
+    const shakeState = new WeakMap();
+
+    function randomShakeValue() {
+      return (Math.random() * 2 - 1) * SHAKE_RANGE_EM;
+    }
+
+    function ensureShakeState(node, now) {
+      let state = shakeState.get(node);
+      if (!state) {
+        state = { x: 0, y: 0, tx: randomShakeValue(), ty: randomShakeValue(), lastTargetTime: now };
+        shakeState.set(node, state);
+      }
+      return state;
+    }
+
+    function resetVisibleShakeLetters(now = performance.now()) {
+      outputDiv.querySelectorAll('.shake-letter').forEach(node => {
+        const state = { x: 0, y: 0, tx: randomShakeValue(), ty: randomShakeValue(), lastTargetTime: now };
+        shakeState.set(node, state);
+        node.style.transform = 'translate(0em, 0em)';
+      });
+    }
+
+    function animateShake(now) {
+      outputDiv.querySelectorAll('.shake-letter').forEach(node => {
+        const state = ensureShakeState(node, now);
+
+        if (now - state.lastTargetTime >= SHAKE_INTERVAL_MS) {
+          const steps = Math.max(1, Math.floor((now - state.lastTargetTime) / SHAKE_INTERVAL_MS));
+          state.lastTargetTime += steps * SHAKE_INTERVAL_MS;
+          state.tx = randomShakeValue();
+          state.ty = randomShakeValue();
+        }
+
+        state.x += (state.tx - state.x) * SHAKE_LERP;
+        state.y += (state.ty - state.y) * SHAKE_LERP;
+        node.style.transform = `translate(${state.x.toFixed(4)}em, ${state.y.toFixed(4)}em)`;
+      });
+
+      requestAnimationFrame(animateShake);
+    }
+
     function createSpan(char, effects, scale, dyn, delay) {
       let node=document.createTextNode(char==='\u0000' ? ' ':char);
-      if(effects.includes('shake')){ const s=document.createElement('span');s.className='shake-letter';s.style.animationDelay=delay+'ms';s.appendChild(node);node=s; }
+      if(effects.includes('shake')){ const s=document.createElement('span');s.className='shake-letter';s.appendChild(node);node=s; }
       if(effects.includes('wave')){ const w=document.createElement('span');w.className='wave-letter';w.style.animationDelay=delay+'ms';w.appendChild(node);node=w; }
       if(scale!==1){ const sc=document.createElement('span');sc.style.display='inline-block';sc.style.fontSize=scale+'em';sc.appendChild(node);node=sc; }
       if(dyn!==1){ const d=document.createElement('span');d.className='dynamic-letter';d.style.setProperty('--dyn-factor',dyn);d.style.animationDelay=delay+'ms';d.appendChild(node);node=d; }
@@ -532,11 +580,12 @@ segments.forEach(({ raw, splitType }) => {
 currentPage = 0;
 }}
     
-    function showPage(idx){if(!pages[idx])return;outputDiv.innerHTML='';outputDiv.className='';if(fairyFlags[idx])outputDiv.classList.add('fairy-border');if(kanbanFlags[idx])outputDiv.classList.add('kanban-border');if(systemFlags[idx])outputDiv.classList.add('system-style');if(diaryFlags[idx])outputDiv.classList.add('diary-style');if(clearFlags[idx])outputDiv.classList.add('clear-style');if(majoFlags[idx])outputDiv.classList.add('majo-style');outputDiv.appendChild(pages[idx].cloneNode(true));}
+    function showPage(idx){if(!pages[idx])return;outputDiv.innerHTML='';outputDiv.className='';if(fairyFlags[idx])outputDiv.classList.add('fairy-border');if(kanbanFlags[idx])outputDiv.classList.add('kanban-border');if(systemFlags[idx])outputDiv.classList.add('system-style');if(diaryFlags[idx])outputDiv.classList.add('diary-style');if(clearFlags[idx])outputDiv.classList.add('clear-style');if(majoFlags[idx])outputDiv.classList.add('majo-style');outputDiv.appendChild(pages[idx].cloneNode(true));resetVisibleShakeLetters();}
     function updatePreview(){generatePages(inputArea.value);showPage(0);}
     inputArea.addEventListener('input',updatePreview);
     outputDiv.addEventListener('click',()=>{if(currentPage<pages.length-1)showPage(++currentPage);});
     updatePreview();
+    requestAnimationFrame(animateShake);
     importBtn.addEventListener('click',()=>fileInput.click());
     fileInput.addEventListener('change',event=>{
       const file=event.target.files&&event.target.files[0];
