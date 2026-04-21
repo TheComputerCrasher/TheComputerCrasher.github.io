@@ -21,7 +21,7 @@
     /* Animations */
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     @keyframes dynamicShrink { from { transform: scale(var(--dyn-factor)); } to { transform: scale(1); } }
-    @keyframes shake { 0%{transform:translate(0,0)rotate(0);}20%{transform:translate(-0.5px,-0.5px)rotate(-1deg);}40%{transform:translate(-0.5px,0.5px)rotate(1deg);}60%{transform:translate(0.5px,0.5px)rotate(0);}80%{transform:translate(0.5px,-0.5px)rotate(1deg);}100%{transform:translate(0,0)rotate(-1deg);} }
+    @keyframes shake { 0%{transform:translate(0,0)rotate(0);}20%{transform:translate(-0.025em,-0.025em)rotate(-1deg);}40%{transform:translate(-0.025em,0.025em)rotate(1deg);}60%{transform:translate(0.025em,0.025em)rotate(0);}80%{transform:translate(0.025em,-0.025em)rotate(1deg);}100%{transform:translate(0,0)rotate(-1deg);} }
     @keyframes wave {
       from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
       to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
@@ -29,7 +29,7 @@
     @keyframes rainbow { 0%{border-color:hotpink;}12.5%{border-color:orange;}25%{border-color:yellow;}37.5%{border-color:lawngreen;}50%{border-color:cyan;}62.5%{border-color:lawngreen;}75%{border-color:yellow;}87.5%{border-color:orange;}100%{border-color:hotpink;} }
     
     /* Letter effects */
-    .shake-letter { display:inline-block; animation: shake 0.1s infinite; }
+    .shake-letter { display:inline-block; animation: shake 0.12s infinite; }
     .wave-letter { display:inline-block; animation: wave 0.9s linear infinite; transform-origin: center; }
     .dynamic-letter { display:inline-block; transform: scale(var(--dyn-factor)); animation: dynamicShrink 0.05s forwards; }
 
@@ -49,7 +49,7 @@
     <button id="exportBtn" type="button">Export .txt</button>
     <input id="fileInput" type="file" accept=".txt,text/plain" hidden>
   </div>
-  <textarea id="input" placeholder="Use tags from Super Paper Mario's text files! This editor supports <shake>, <wave>, <scale [size]>, <dynamic 3>, <wait [ms]>, <col [hex]>, <fairy>, <fairy2>, <kanban>, <system>, <diary>, <clear>, <majo>, and <icon [button]>."></textarea>
+  <textarea id="input" placeholder="See what Super Paper Mario's text files look like in-game using its custom formatting!\nThis editor supports <shake>, <wave>, <scale [size]>, <dynamic 3>, <wait [ms]>, <col [hex]>, <fairy>, <fairy2>, <kanban>, <system>, <diary>, <clear>, <majo>, and <icon [button]>."></textarea>
   <div id="output" title="Click to advance"></div>
   <script>
     const inputArea=document.getElementById('input'), outputDiv=document.getElementById('output');
@@ -67,10 +67,28 @@
     }
 
     
-  function parseCustomTags(text) {
+  function createDefaultParserState() {
+    return {
+      stack: [],
+      flags: { fairy:false, kanban:false, system:false, diary:false, clear:false, majo:false }
+    };
+  }
+
+  function parseCustomTags(text, initialState = createDefaultParserState()) {
   const frag = document.createDocumentFragment();
-  const stack = [];
-  const flags = { fairy:false, kanban:false, system:false, diary:false, clear:false, majo:false, ph:false };
+  const stack = Array.isArray(initialState.stack)
+    ? initialState.stack.map(entry => ({ ...entry }))
+    : [];
+  const initialFlags = initialState.flags || {};
+  const flags = {
+    fairy: !!initialFlags.fairy,
+    kanban: !!initialFlags.kanban,
+    system: !!initialFlags.system,
+    diary: !!initialFlags.diary,
+    clear: !!initialFlags.clear,
+    majo: !!initialFlags.majo,
+    ph:false
+  };
   let d = 0, i = 0;
 
   // A stack of “containers” where new nodes should be appended.
@@ -305,19 +323,13 @@ if (iconMatch) {
       continue;
     }
 
-    // 4) Close‐tag (including </ph>)
+    // 4) Close‐tag
     const closeMatch = text.slice(i).match(
-      /^<\s*\/\s*(shake|wave|scale|dynamic|fairy|kanban|system|diary|clear|majo|col|ph)\s*>/i
+      /^<\s*\/\s*(shake|wave|scale|dynamic|fairy|kanban|system|diary|clear|majo|col)\s*>/i
     );
     if (closeMatch) {
       const t = closeMatch[1].toLowerCase();
-      if (t === 'ph') {
-        // Pop the <ph> wrapper from the containerStack
-        if (containerStack[containerStack.length - 1].type === 'ph') {
-          containerStack.pop();
-        }
-        flags.ph = false;
-      } else {
+      {
         if (t === 'fairy')  flags.fairy = false;
         if (t === 'kanban') flags.kanban = false;
         if (t === 'system') flags.system = false;
@@ -364,7 +376,21 @@ if (iconMatch) {
     i++;
   }
 
-  return { fragment: frag, ...flags };
+  return {
+    fragment: frag,
+    ...flags,
+    endState: {
+      stack: stack.map(entry => ({ ...entry })),
+      flags: {
+        fairy: flags.fairy,
+        kanban: flags.kanban,
+        system: flags.system,
+        diary: flags.diary,
+        clear: flags.clear,
+        majo: flags.majo
+      }
+    }
+  };
 }
 
 
@@ -430,9 +456,9 @@ function isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, tagStart, tagEnd
   return leftAdjacentUnderscore || rightAdjacentUnderscore;
 }
 
-// Treat <k> as page breaks unless they are on an underscore line or only separated
+// Treat <p> as page breaks unless they are on an underscore line or only separated
 // from an underscore-word by tags/newlines/whitespace.
-text = text.replace(/<\s*k\s*>/gi, (tag, offset, fullText) => {
+text = text.replace(/<\s*p\s*>/gi, (tag, offset, fullText) => {
   const lineStart = fullText.lastIndexOf("\n", offset) + 1;
   const nextNewline = fullText.indexOf("\n", offset);
   const lineEnd = nextNewline === -1 ? fullText.length : nextNewline;
@@ -444,14 +470,18 @@ text = text.replace(/<\s*k\s*>/gi, (tag, offset, fullText) => {
   return pageBreakToken;
 });
 
-// Split on explicit <k>-based breaks and on real underscore-words.
-const parts = [];
-text.split(pageBreakToken).forEach(chunk => {
-  chunk.split(/(?=(?!PAD_|AC_)\b\w+_\w*\b)/).forEach(part => {
+// Split on explicit <p>-based breaks and on real underscore-words.
+// <p> keeps text effect state; underscore-word splits reset state.
+const segments = [];
+text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
+  chunk.split(/(?=(?!PAD_|AC_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
     // If an underscore split happens right after a tag-only line, collapse
     // that line break so tags do not render as an empty line.
     const normalizedPart = part.replace(/[\r\n]+([\s\u0000]*(?:<[^>]+>[\s\u0000]*)+)$/g, (_, tags) => tags);
-    if (normalizedPart.replace(/[\s\u0000]+/g, "").length > 0) parts.push(normalizedPart);
+    if (normalizedPart.replace(/[\s\u0000]+/g, "").length > 0) {
+      const splitType = partIdx > 0 ? 'underscore' : (chunkIdx > 0 ? 'p' : 'start');
+      segments.push({ raw: normalizedPart, splitType });
+    }
   });
 });
 
@@ -467,9 +497,15 @@ text.split(pageBreakToken).forEach(chunk => {
 
 
 // Process each segment, collapsing <ph> lines to zero height
-parts.forEach(raw => {
+let parserState = createDefaultParserState();
+segments.forEach(({ raw, splitType }) => {
+  if (splitType === 'underscore' || splitType === 'start') {
+    parserState = createDefaultParserState();
+  }
+
   const trimmed = raw.trim();
-  const { fragment, fairy, kanban, system, diary, clear, majo, ph } = parseCustomTags(trimmed);
+  const { fragment, fairy, kanban, system, diary, clear, majo, ph, endState } = parseCustomTags(trimmed, parserState);
+  parserState = endState;
 
   if (ph) {
     // Wrap the placeholder-only content so it takes zero height
