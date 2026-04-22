@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="Super Paper Mario, SPM, Super Paper Mario formatting, Super Paper Mario hacking, Super Paper Mario modding, Super Paper Mario text editor, Super Paper Mario text preview, SPM text editor, SPM text preview, SPM hacking, SPM modding, SPM formatting, text editor, Wii">
+  <meta name="keywords" content="Super Paper Mario, SPM, Super Paper Mario formatting, Super Paper Mario tags, Super Paper Mario hacking, Super Paper Mario modding, Super Paper Mario text editor, Super Paper Mario text preview, Super Paper Mario text render, SPM text editor, SPM text preview, SPM hacking, SPM modding, SPM formatting, text editor, Wii">
   <title>SPM Text Preview</title>
   <link rel="stylesheet" href="spm-stylesheet.css">
   <style>
@@ -48,10 +48,10 @@
 <body>
   <h1>Super Paper Mario Text Preview</h1>
   <div class="controls">
-    <button id="importBtn" type="button">Import .txt</button>
-    <button id="exportBtn" type="button">Export .txt</button>
-    <label for="encodingSelect">Encoding:</label>
-    <select id="encodingSelect">
+    <button id="importBtn" type="button">Import</button>
+    <button id="exportBtn" type="button">Export</button>
+    <!-- <label for="encodingSelect">Encoding:</label> -->
+    <select id="encodingSelect" hidden>
       <option value="auto">Auto</option>
       <option value="utf-8">UTF-8</option>
       <option value="windows-1252">Windows-1252</option>
@@ -69,7 +69,6 @@
     const importBtn=document.getElementById('importBtn'), exportBtn=document.getElementById('exportBtn'), fileInput=document.getElementById('fileInput'), encodingSelect=document.getElementById('encodingSelect');
     let pages=[], fairyFlags=[], kanbanFlags=[], systemFlags=[], diaryFlags=[], clearFlags=[], majoFlags=[], currentPage=0;
     const ENCODING_STORAGE_KEY='spmImportEncoding';
-
     const SHAKE_INTERVAL_MS = 1;
     const SHAKE_RANGE_EM = 0.1;
     const SHAKE_LERP = 0.38;
@@ -116,7 +115,7 @@
     }
 
     function createSpan(char, effects, scale, dyn, delay) {
-      let node=document.createTextNode(char==='\u0000' ? ' ':char);
+      let node=document.createTextNode(char);
       if(effects.includes('shake')){ const s=document.createElement('span');s.className='shake-letter';s.appendChild(node);node=s; }
       if(effects.includes('wave')){ const w=document.createElement('span');w.className='wave-letter';w.style.animationDelay=delay+'ms';w.appendChild(node);node=w; }
       if(scale!==1){ const sc=document.createElement('span');sc.style.display='inline-block';sc.style.fontSize=scale+'em';sc.appendChild(node);node=sc; }
@@ -312,11 +311,17 @@ if (iconMatch) {
     else if (arg === 'PAD_MINUS') 
     displayText = '⊖';
     else if (arg === 'PAD_1') 
-    displayText = '①';
+    displayText = '❶';
     else if (arg === 'PAD_2') 
-    displayText = '②';
-    else if (arg === 'PAD_A') 
+    displayText = '❷';
+    else if (arg.startsWith('PAD_A'))
     displayText = 'Ⓐ';
+    else if (arg.startsWith('PAD_B'))
+    displayText = '🄱';
+    else if (arg.startsWith('PAD_Y'))
+    displayText = 'Ⓨ';
+    else if (arg.startsWith('PAD_X'))
+    displayText = 'Ⓧ';
     else if (arg.startsWith('AC_KOURA')) 
     displayText = 'Shell';
     else if (arg.startsWith('AC_ON')) 
@@ -493,6 +498,9 @@ if (iconMatch) {
     
   function generatePages(text) {
 {
+  // Convert null bytes to real line breaks before any formatting/page logic.
+  text = text.replace(/\u0000/g, '\n');
+
   // Remove pure tag lines from visual output while preserving their effects.
   // Tag-only lines are merged into neighboring content so they do not render blank rows.
   const rawLines = text.split("\n");
@@ -570,7 +578,7 @@ text = text.replace(/<p>|<keyyon>|<o>>/gi, (tag, offset, fullText) => {
 // <p> keeps text effect state; underscore-word splits reset state.
 const segments = [];
 text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
-  chunk.split(/(?=(?!PAD_|AC_|se_|adv_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
+  chunk.split(/(?=(?!PAD_|AC_|se_|adv_|ICON_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
     // If an underscore split happens right after a tag-only line, collapse
     // that line break so tags do not render as an empty line.
     const normalizedPart = part.replace(/[\r\n]+([\s\u0000]*(?:<[^>]+>[\s\u0000]*)+)$/g, (_, tags) => tags);
