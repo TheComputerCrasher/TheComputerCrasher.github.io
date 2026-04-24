@@ -12,37 +12,111 @@
 
     /* Base styles */
     body, #output { font-family: 'SPMText', sans-serif; }
-    body { display: flex; flex-direction: column; align-items: center; padding: 2rem; background: #f4f4f4; }
-    .controls { width: 80%; display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .controls button { font-family: monospace; font-size: 0.95rem; padding: 0.45rem 0.75rem; cursor: pointer; }
-    textarea { width: 80%; height: 200px; margin-bottom: 1rem; font-family: monospace; font-size: 1rem; white-space: pre-wrap; word-wrap: break-word; resize: both; }
-    #output { font-size: 1.5rem; width: 600px; background: white; padding-right: 2em; padding-left: 1.5em; padding-top: 1em; padding-bottom: 0em; white-space: pre-wrap; cursor: pointer; resize: both; overflow: auto; box-sizing: border-box; border: 4px solid black; }
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+    .controls {
+      width: 80%;
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .controls button {
+      font-family: monospace;
+      font-size: 0.95rem;
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
+    }
+    textarea {
+      width: 80%;
+      height: 20em;
+      margin-bottom: 1rem;
+      font-family: monospace;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      resize: both;
+    }
+    #output {
+      line-height: 1.4em;
+      font-size: 1.5em;
+      width: 27em;
+      background: white;
+      padding: 1em;
+      white-space: pre-wrap;
+      cursor: pointer;
+      resize: both;
+      overflow: auto;
+      box-sizing: border-box;
+      border: 0.2em solid black;
+    }
 
     /* Animations */
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    @keyframes dynamicShrink { from { transform: scale(var(--dyn-factor)); } to { transform: scale(1); } }
-    @keyframes wave {
-      from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+    @keyframes dynamicShrink {
+      from { transform: scale(var(--dyn-factor)); }
+      to { transform: scale(1); }
     }
-    @keyframes rainbow { 0%{border-color:hotpink;}12.5%{border-color:orange;}25%{border-color:yellow;}37.5%{border-color:lawngreen;}50%{border-color:cyan;}62.5%{border-color:lawngreen;}75%{border-color:yellow;}87.5%{border-color:orange;}100%{border-color:hotpink;} }
-    
+    @keyframes wave {
+      from { transform: rotate(0deg) translateX(0.125em) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(0.125em) rotate(-360deg); }
+    }
+    @keyframes rainbow {
+      0%{border-color:#FF5CB5;}
+      25%{border-color:#FFEC63;}
+      50%{border-color:#84FF42;}
+      75%{border-color:#52D3FF;}
+      100%{border-color:#FF5CB5;}
+    }
+
     /* Letter effects */
     .shake-letter {
       display:inline-block;
       transform: translate(0, 0);
       will-change: transform;
     }
-    .wave-letter { display:inline-block; animation: wave 0.9s linear infinite; transform-origin: center; }
-    .dynamic-letter { display:inline-block; transform: scale(var(--dyn-factor)); animation: dynamicShrink 0.05s forwards; }
+    .wave-letter {
+      display:inline-block;
+      animation: wave 0.9s linear infinite;
+      transform-origin: center;
+    }
+    .dynamic-letter {
+      display:inline-block;
+      transform: scale(var(--dyn-factor));
+      animation: dynamicShrink 0.05s forwards;
+    }
 
     /* Page container styles */
-    #output.fairy-border { border:4px solid; animation: rainbow 5s linear infinite; }
-    #output.kanban-border { border:4px solid brown; }
-    #output.system-style { background: darkblue; border:4px solid gray; color:white; }
-    #output.diary-style { padding: 1em; background: lightgoldenrodyellow; }
-    #output.clear-style { padding: 1em; background: black; color: white; }
-    #output.majo-style { background: #4a3867; color: #ffddddff; }
+    #output.fairy-border {
+      border: 0.2em solid;
+      animation: rainbow 5s linear infinite;
+    }
+    #output.kanban-border {
+      border: 0.2em solid brown;
+    }
+    #output.system-style {
+      background: darkblue;
+      border:0.2em solid gray;
+      color:white;
+    }
+    #output.diary-style {
+      padding: 1em;
+      background: lightgoldenrodyellow;
+    }
+    #output.clear-style {
+      padding: 1em;
+      background: black;
+      color: white;
+    }
+    #output.majo-style {
+      background: #4a3867;
+      color: #ffddddff;
+    }
   </style>
 </head>
 <body>
@@ -114,13 +188,41 @@
       requestAnimationFrame(animateShake);
     }
 
-    function createSpan(char, effects, scale, dyn, delay) {
+    function createSpan(char, effects, scale, dyn, delay, waveDelay = delay) {
       let node=document.createTextNode(char);
-      if(effects.includes('shake')){ const s=document.createElement('span');s.className='shake-letter';s.appendChild(node);node=s; }
-      if(effects.includes('wave')){ const w=document.createElement('span');w.className='wave-letter';w.style.animationDelay=delay+'ms';w.appendChild(node);node=w; }
-      if(scale!==1){ const sc=document.createElement('span');sc.style.display='inline-block';sc.style.fontSize=scale+'em';sc.appendChild(node);node=sc; }
-      if(dyn!==1){ const d=document.createElement('span');d.className='dynamic-letter';d.style.setProperty('--dyn-factor',dyn);d.style.animationDelay=delay+'ms';d.appendChild(node);node=d; }
-      const f=document.createElement('span');f.style.display='inline-block';f.style.opacity='0';f.style.animation=`fadeIn 0s forwards ${delay}ms`;f.appendChild(node);
+      if(effects.includes('shake')){
+        const s=document.createElement('span');
+        s.className='shake-letter';
+        s.appendChild(node);
+        node=s;
+      }
+      if(effects.includes('wave')){
+        const w=document.createElement('span');
+        w.className='wave-letter';
+        w.style.animationDelay=waveDelay+'ms';
+        w.appendChild(node);
+        node=w;
+      }
+      if(scale!==1){
+        const sc=document.createElement('span');
+        sc.style.display='inline-block';
+        sc.style.fontSize=scale+'em';
+        sc.appendChild(node);
+        node=sc;
+      }
+      if(dyn!==1){
+        const d=document.createElement('span');
+        d.className='dynamic-letter';
+        d.style.setProperty('--dyn-factor',dyn);
+        d.style.animationDelay=delay+'ms';
+        d.appendChild(node);
+        node=d;
+      }
+      const f=document.createElement('span');
+      f.style.display='inline-block';
+      f.style.opacity='0';
+      f.style.animation=`fadeIn 0s forwards ${delay}ms`;
+      f.appendChild(node);
       return f;
     }
 
@@ -162,7 +264,6 @@
       return decodeWithEncoding(bytes, 'windows-1252', false).replace(/^\uFEFF/, '');
     }
 
-    
   function createDefaultParserState() {
     return {
       stack: [],
@@ -186,6 +287,7 @@
     ph:false
   };
   let d = 0, i = 0;
+  let waveLineIndex = 0;
 
   // A stack of “containers” where new nodes should be appended.
   // Start with the root fragment.
@@ -207,6 +309,7 @@
     // 1) Newline → <br>
     if (c === '\n') {
       currentContainer().appendChild(document.createElement('br'));
+      waveLineIndex = 0;
       i++;
       continue;
     }
@@ -220,8 +323,8 @@ if (iconMatch) {
     const img = document.createElement('img');
     img.src    = 'images/Merlumina.png';
     img.alt    = 'Merlumina';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '3em';
+    img.style.height = '3em';
     currentContainer().appendChild(img);
   } else if (arg === 'AC_STAR') {
   const img = document.createElement('img');
@@ -302,49 +405,52 @@ if (iconMatch) {
     currentContainer().appendChild(img);
   } else {
     let displayText;
-    if (arg.startsWith('STICK')) 
-    displayText = '✚';
+    if (arg.startsWith('STICK'))
+      displayText = '✚';
     else if (arg === 'AC_STAR')
-    displayText = '★';
-    else if (arg === 'PAD_PLUS') 
-    displayText = '⊕';
-    else if (arg === 'PAD_MINUS') 
-    displayText = '⊖';
-    else if (arg === 'PAD_1') 
-    displayText = '❶';
-    else if (arg === 'PAD_2') 
-    displayText = '❷';
+      displayText = '★';
+    else if (arg === 'PAD_PLUS')
+      displayText = '⊕';
+    else if (arg === 'PAD_MINUS')
+      displayText = '⊖';
+    else if (arg === 'PAD_1')
+      displayText = '❶';
+    else if (arg === 'PAD_2')
+      displayText = '❷';
     else if (arg.startsWith('PAD_A'))
-    displayText = '🅐';
+      displayText = '🅐';
     else if (arg.startsWith('PAD_B'))
-    displayText = '🅱';
+      displayText = '🅱';
     else if (arg.startsWith('PAD_Y'))
-    displayText = '🆈';
+      displayText = '🆈';
     else if (arg.startsWith('PAD_X'))
-    displayText = '🆇';
-    else if (arg.startsWith('AC_KOURA')) 
-    displayText = 'Shell';
-    else if (arg.startsWith('AC_ON')) 
-    displayText = 'Circle';
-    else if (arg === 'HM') 
-    displayText = '♡';
-    else if (arg.startsWith('AC_KINOKO')) 
-    displayText = 'Mushroom';
-	else {
+      displayText = '🆇';
+    else if (arg.startsWith('AC_KOURA'))
+      displayText = 'Shell';
+    else if (arg.startsWith('AC_ON'))
+      displayText = 'Circle';
+    else if (arg === 'HM')
+      displayText = '♡';
+    else if (arg.startsWith('AC_KINOKO'))
+      displayText = 'Mushroom';
+	  else {
       displayText = arg.charAt(0);
     }
 
     for (const ch of displayText) {
+      const waveDelay = waveLineIndex * 25;
       currentContainer().appendChild(
         createSpan(
           ch,
           stack.filter(e => ['shake','wave'].includes(e.type)).map(e => e.type),
           stack.filter(e => e.type === 'scale').reduce((s,e) => s * e.factor, 1),
           stack.filter(e => e.type === 'dynamic').reduce((s,e) => s * e.factor, 1),
-          d * 25
+          d * 25,
+          waveDelay
         )
       );
       d++;
+      waveLineIndex++;
     }
   }
 
@@ -464,8 +570,9 @@ if (iconMatch) {
     const colorEntry = stack.find(e => e.type === 'col');
     const color = colorEntry ? '#' + colorEntry.value : null;
     const delay = d * 25;
-    
-    let node = createSpan(c, effects, scaleVal, dynVal, delay);
+    const waveDelay = waveLineIndex * 25;
+
+    let node = createSpan(c, effects, scaleVal, dynVal, delay, waveDelay);
     if (color) {
       const sp = document.createElement('span');
       sp.style.color = color;
@@ -474,6 +581,7 @@ if (iconMatch) {
     }
     currentContainer().appendChild(node);
     d++;
+    waveLineIndex++;
     i++;
   }
 
@@ -495,7 +603,6 @@ if (iconMatch) {
 }
 
 
-    
   function generatePages(text) {
 {
   // Convert null bytes to real line breaks before any formatting/page logic.
@@ -549,14 +656,14 @@ text = text
   .join('\n');
 
 
-const underscoreWordRegex = /\b(?!PAD_|AC_)\w+_\w*\b/;
+const underscoreWordRegex = /\b(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*\b/;
 const pageBreakToken = "[[SPM_PAGE_BREAK]]";
 
 function isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, tagStart, tagEnd) {
   const left = fullText.slice(0, tagStart).replace(/(?:[\s\u0000]|<[^>]+>)*$/g, "");
   const right = fullText.slice(tagEnd).replace(/^(?:[\s\u0000]|<[^>]+>)*/g, "");
-  const leftAdjacentUnderscore = /\b(?!PAD_|AC_)\w+_\w*$/.test(left);
-  const rightAdjacentUnderscore = /^(?!PAD_|AC_)\w+_\w*\b/.test(right);
+  const leftAdjacentUnderscore = /\b(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*$/.test(left);
+  const rightAdjacentUnderscore = /^(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*\b/.test(right);
   return leftAdjacentUnderscore || rightAdjacentUnderscore;
 }
 
@@ -578,7 +685,7 @@ text = text.replace(/<p>|<keyyon>|<o>>/gi, (tag, offset, fullText) => {
 // <p> keeps text effect state; underscore-word splits reset state.
 const segments = [];
 text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
-  chunk.split(/(?=(?!PAD_|AC_|se_|adv_|ICON_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
+  chunk.split(/(?=(?!PAD_|AC_|adv_|ICON_|AN_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
     // If an underscore split happens right after a tag-only line, collapse
     // that line break so tags do not render as an empty line.
     const normalizedPart = part.replace(/[\r\n]+([\s\u0000]*(?:<[^>]+>[\s\u0000]*)+)$/g, (_, tags) => tags);
@@ -635,9 +742,24 @@ segments.forEach(({ raw, splitType }) => {
 // Start at the first page
 currentPage = 0;
 }}
-    
-    function showPage(idx){if(!pages[idx])return;outputDiv.innerHTML='';outputDiv.className='';if(fairyFlags[idx])outputDiv.classList.add('fairy-border');if(kanbanFlags[idx])outputDiv.classList.add('kanban-border');if(systemFlags[idx])outputDiv.classList.add('system-style');if(diaryFlags[idx])outputDiv.classList.add('diary-style');if(clearFlags[idx])outputDiv.classList.add('clear-style');if(majoFlags[idx])outputDiv.classList.add('majo-style');outputDiv.appendChild(pages[idx].cloneNode(true));resetVisibleShakeLetters();}
-    function updatePreview(){generatePages(inputArea.value);showPage(0);}
+
+    function showPage(idx){
+      if(!pages[idx])return;
+      outputDiv.innerHTML='';
+      outputDiv.className='';
+      if(fairyFlags[idx])outputDiv.classList.add('fairy-border');
+      if(kanbanFlags[idx])outputDiv.classList.add('kanban-border');
+      if(systemFlags[idx])outputDiv.classList.add('system-style');
+      if(diaryFlags[idx])outputDiv.classList.add('diary-style');
+      if(clearFlags[idx])outputDiv.classList.add('clear-style');
+      if(majoFlags[idx])outputDiv.classList.add('majo-style');
+      outputDiv.appendChild(pages[idx].cloneNode(true));
+      resetVisibleShakeLetters();
+    }
+    function updatePreview(){
+      generatePages(inputArea.value);
+      showPage(0);
+    }
     inputArea.addEventListener('input',updatePreview);
     outputDiv.addEventListener('click',()=>{if(currentPage<pages.length-1)showPage(++currentPage);});
     updatePreview();
