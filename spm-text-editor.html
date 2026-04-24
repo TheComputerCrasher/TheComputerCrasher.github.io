@@ -3,8 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="Super Paper Mario, SPM, Super Paper Mario formatting, Super Paper Mario tags, Super Paper Mario hacking, Super Paper Mario modding, Super Paper Mario text editor, Super Paper Mario text preview, Super Paper Mario text render, SPM text editor, SPM text preview, SPM hacking, SPM modding, SPM formatting, text editor, Wii">
-  <title>SPM Text Preview</title>
+  <meta name="keywords" content="
+  Paper Mario: The Thousand-Year Door, Paper Mario TTYD, TTYD, 
+  Paper Mario: The Thousand-Year Door formatting, Paper Mario: The Thousand-Year Door tags, 
+  Paper Mario: The Thousand-Year Door hacking, Paper Mario: The Thousand-Year Door modding, 
+  Paper Mario: The Thousand-Year Door text editor, Paper Mario: The Thousand-Year Door text preview, 
+  Paper Mario: The Thousand-Year Door text render, Paper Mario: The Thousand-Year Door custom text, 
+  TTYD text editor, TTYD text preview, TTYD hacking, TTYD modding, TTYD formatting, TTYD text render
+  TTYD custom text, GameCube, GameCube modding, GameCube mods, GameCube hacking,
+  Super Paper Mario, SPM, Super Paper Mario formatting, Super Paper Mario tags, 
+  Super Paper Mario hacking, Super Paper Mario modding, Super Paper Mario text editor, 
+  Super Paper Mario text preview, Super Paper Mario text render, SPM text editor, 
+  SPM text preview, SPM hacking, SPM modding, SPM formatting, text editor, SPM text render,
+  SPM custom text, Wii, Wii modding, Wii mods, Wii hacking">
+  <title>SPM/TTYD Text Renderer</title>
   <link rel="stylesheet" href="spm-stylesheet.css">
   <style>
     /* Font */
@@ -120,7 +132,7 @@
   </style>
 </head>
 <body>
-  <h1>Super Paper Mario Text Preview</h1>
+  <h1>SPM/TTYD Text Editor</h1>
   <div class="controls">
     <button id="importBtn" type="button">Import</button>
     <button id="exportBtn" type="button">Export</button>
@@ -136,7 +148,8 @@
     </select>
     <input id="fileInput" type="file" accept=".txt,text/plain" hidden>
   </div>
-  <textarea id="input" placeholder="See what Super Paper Mario's text files look like in-game using its custom formatting!"></textarea>
+  <textarea id="input" placeholder="Easily edit Paper Mario: The Thousand-Year's and Super Paper Mario's text files using their custom formatting!
+(Full documentation and separate SPM/TTYD modes coming... eventually)"></textarea>
   <div id="output" title="Click to advance"></div>
   <script>
     const inputArea=document.getElementById('input'), outputDiv=document.getElementById('output');
@@ -460,70 +473,58 @@ if (iconMatch) {
 }
 
 
-    // 3) Open‐tag (including <ph>)
+    // 3) Open‐tag
     const openMatch = text.slice(i).match(
-      /^<\s*(shake|wave|scale|dynamic|wait|fairy|kanban|system|diary|clear|majo|col|ph)\s*([^>]*)>/i
+      /^<\s*(shake|wave|scale|dynamic|wait|fairy|kanban|system|diary|clear|majo|col|wpos|dkey|AN|ITEM|housou|plate|tec|boss|keyxon|anim|s|num|se)\s*([^>]*)>/i
     );
     if (openMatch) {
       const t = openMatch[1].toLowerCase();
       const arg = openMatch[2].trim();
 
-      if (t === 'ph') {
-        // Create a wrapper <div> with zero height for <ph> ... </ph>
-        const wrapper = document.createElement('div');
-        wrapper.style.height = '0';
-        wrapper.style.overflow = 'hidden';
-        currentContainer().appendChild(wrapper);
-        // Push the wrapper onto the containerStack so subsequent content goes inside it
-        containerStack.push({ type: 'ph', node: wrapper });
-        flags.ph = true;
-      } else {
-        // All other open‐tags behave as before
-        switch (t) {
-          case 'wait':
-            d += Math.ceil(parseFloat(arg) / 25) || 0;
-            break;
-          case 'col':
-            stack.push({ type:'col', value:arg });
-            break;
-          case 'scale': {
-            const existing = stack.find(e => e.type === 'scale');
-            const nf       = parseFloat(arg) || 1;
-            if (existing) existing.factor = nf;
-            else stack.push({ type:'scale', factor:nf });
-            break;
-          }
-          case 'dynamic':
-            if (!stack.some(e => e.type === 'dynamic'))
-              stack.push({ type:'dynamic', factor:parseFloat(arg)||1 });
-            break;
-          case 'shake':
-            if (!stack.some(e => e.type === 'shake'))
-              stack.push({ type:'shake' });
-            break;
-          case 'wave':
-            if (!stack.some(e => e.type === 'wave'))
-              stack.push({ type:'wave' });
-            break;
-          case 'fairy':
-            flags.fairy = true;
-            break;
-          case 'kanban':
-            flags.kanban = true;
-            break;
-          case 'system':
-            flags.system = true;
-            break;
-          case 'diary':
-            flags.diary = true;
-            break;
-          case 'clear':
-            flags.clear = true;
-            break;
-          case 'majo':
-            flags.majo = true;
-            break;
+      switch (t) {
+        case 'wait':
+          d += Math.ceil(parseFloat(arg) / 25) || 0;
+          break;
+        case 'col':
+          stack.push({ type:'col', value:arg });
+          break;
+        case 'scale': {
+          const existing = stack.find(e => e.type === 'scale');
+          const nf       = parseFloat(arg) || 1;
+          if (existing) existing.factor = nf;
+          else stack.push({ type:'scale', factor:nf });
+          break;
         }
+        case 'dynamic':
+          if (!stack.some(e => e.type === 'dynamic'))
+            stack.push({ type:'dynamic', factor:parseFloat(arg)||1 });
+          break;
+        case 'shake':
+          if (!stack.some(e => e.type === 'shake'))
+            stack.push({ type:'shake' });
+          break;
+        case 'wave':
+          if (!stack.some(e => e.type === 'wave'))
+            stack.push({ type:'wave' });
+          break;
+        case 'fairy':
+          flags.fairy = true;
+          break;
+        case 'kanban':
+          flags.kanban = true;
+          break;
+        case 'system':
+          flags.system = true;
+          break;
+        case 'diary':
+          flags.diary = true;
+          break;
+        case 'clear':
+          flags.clear = true;
+          break;
+        case 'majo':
+          flags.majo = true;
+          break;
       }
 
       i += openMatch[0].length;
@@ -532,7 +533,7 @@ if (iconMatch) {
 
     // 4) Close‐tag
     const closeMatch = text.slice(i).match(
-      /^<\s*\/\s*(shake|wave|scale|dynamic|fairy|kanban|system|diary|clear|majo|col)\s*>/i
+      /^<\s*\/\s*(shake|wave|scale|dynamic|wait|fairy|kanban|system|col|wpos|dkey|keyxon|anim|se)\s*>/i
     );
     if (closeMatch) {
       const t = closeMatch[1].toLowerCase();
@@ -656,20 +657,20 @@ text = text
   .join('\n');
 
 
-const underscoreWordRegex = /\b(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*\b/;
+const underscoreWordRegex = /\b(?!PAD_|AC_|se_|adv_|ICON_|AN_)\w+_\w*\b/;
 const pageBreakToken = "[[SPM_PAGE_BREAK]]";
-
+ 
 function isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, tagStart, tagEnd) {
   const left = fullText.slice(0, tagStart).replace(/(?:[\s\u0000]|<[^>]+>)*$/g, "");
   const right = fullText.slice(tagEnd).replace(/^(?:[\s\u0000]|<[^>]+>)*/g, "");
-  const leftAdjacentUnderscore = /\b(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*$/.test(left);
-  const rightAdjacentUnderscore = /^(?!PAD_|AC_|adv_|ICON_|AN_)\w+_\w*\b/.test(right);
+  const leftAdjacentUnderscore = /\b(?!PAD_|AC_|se_|adv_|ICON_|AN_)\w+_\w*$/.test(left);
+  const rightAdjacentUnderscore = /^(?!PAD_|AC_|se_|adv_|ICON_|AN_)\w+_\w*\b/.test(right);
   return leftAdjacentUnderscore || rightAdjacentUnderscore;
 }
 
-// Treat <p>, <keyyon>, and <o> as page breaks unless they are on an underscore line or only separated
+// Treat <p> as page breaks unless they are on an underscore line or only separated
 // from an underscore-word by tags/newlines/whitespace.
-text = text.replace(/<p>|<keyyon>|<o>>/gi, (tag, offset, fullText) => {
+text = text.replace(/<p>/gi, (tag, offset, fullText) => {
   const lineStart = fullText.lastIndexOf("\n", offset) + 1;
   const nextNewline = fullText.indexOf("\n", offset);
   const lineEnd = nextNewline === -1 ? fullText.length : nextNewline;
@@ -685,7 +686,7 @@ text = text.replace(/<p>|<keyyon>|<o>>/gi, (tag, offset, fullText) => {
 // <p> keeps text effect state; underscore-word splits reset state.
 const segments = [];
 text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
-  chunk.split(/(?=(?!PAD_|AC_|adv_|ICON_|AN_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
+  chunk.split(/(?=(?!PAD_|AC_|se_|adv_|ICON_|AN_)\b\w+_\w*\b)/).forEach((part, partIdx) => {
     // If an underscore split happens right after a tag-only line, collapse
     // that line break so tags do not render as an empty line.
     const normalizedPart = part.replace(/[\r\n]+([\s\u0000]*(?:<[^>]+>[\s\u0000]*)+)$/g, (_, tags) => tags);
