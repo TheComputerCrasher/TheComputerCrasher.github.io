@@ -17,13 +17,24 @@
   SPM text preview, SPM hacking, SPM modding, SPM formatting, text editor, SPM text render,
   SPM custom text, Wii, Wii modding, Wii mods, Wii hacking">
   <title>SPM/TTYD Text Renderer</title>
-  <link rel="stylesheet" href="spm-stylesheet.css">
   <style>
-    /* Font */
-    @font-face { font-family: 'SPMText'; src: url('PopJoyStd-B.ttf') format('truetype'); }
+    /* Fonts */
+    @font-face { 
+      font-family: 'HeyGorgeous'; 
+      src: url('heygorgeous.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'PopJoy';
+      src: url('PopJoyStd-B.ttf')
+    }
 
     /* Base styles */
-    body, #output { font-family: 'SPMText', sans-serif; }
+    body, #output {
+    font-family: 'HeyGorgeous', 'PopJoy', 'Comic Sans', sans-serif; 
+    color: #000000;
+    font-size: 20px;
+  }
+    header { display: none }
     body {
       display: flex;
       flex-direction: column;
@@ -42,7 +53,6 @@
       font-family: monospace;
       font-size: 0.95rem;
       padding: 0.45rem 0.75rem;
-      cursor: pointer;
     }
     textarea {
       width: 80%;
@@ -55,17 +65,18 @@
       resize: both;
     }
     #output {
-      line-height: 1.4em;
-      font-size: 1.5em;
-      width: 27em;
+      line-height: 1.5em;
+      font-weight: lighter;
+      letter-spacing: 0.1em;
+      width: 34em;
       background: white;
-      padding: 1em;
+      padding: 1.5em;
       white-space: pre-wrap;
-      cursor: pointer;
       resize: both;
       overflow: auto;
       box-sizing: border-box;
-      border: 0.2em solid black;
+      border: 0.4em solid black;
+      cursor: pointer;
     }
 
     /* Animations */
@@ -105,20 +116,21 @@
 
     /* Page container styles */
     #output.fairy-border {
-      border: 0.2em solid;
+      border: 0.4em solid;
       animation: rainbow 5s linear infinite;
     }
     #output.kanban-border {
-      border: 0.2em solid brown;
+      border: 0.4em solid brown;
     }
     #output.system-style {
       background: darkblue;
-      border:0.2em solid gray;
-      color:white;
+      border: 0.4em solid gray;
+      color: white;
     }
     #output.diary-style {
       padding: 1em;
       background: lightgoldenrodyellow;
+      border: 0.2em solid #9a9200;
     }
     #output.clear-style {
       padding: 1em;
@@ -297,7 +309,6 @@
     diary: !!initialFlags.diary,
     clear: !!initialFlags.clear,
     majo: !!initialFlags.majo,
-    ph:false
   };
   let d = 0, i = 0;
   let waveLineIndex = 0;
@@ -343,78 +354,78 @@ if (iconMatch) {
   const img = document.createElement('img');
     img.src    = 'images/Star.png';
     img.alt    = 'Shooting Star';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
   } else if (arg === 'AC_KOURA') {
   const img = document.createElement('img');
     img.src    = 'images/Shell.png';
     img.alt    = 'Shell';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
   } else if (arg === 'AC_ON') {
   const img = document.createElement('img');
     img.src    = 'images/Circle.png';
     img.alt    = 'Circle with star';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
   } else if (arg === 'AC_KINOKO') {
   const img = document.createElement('img');
     img.src    = 'images/Mushroom.png';
     img.alt    = 'Mushroom';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
 	} else if (arg === 'PAD_PLUS') {
   const img = document.createElement('img');
     img.src    = 'images/Plus.png';
     img.alt    = 'Plus button';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
 	} else if (arg === 'PAD_MINUS') {
   const img = document.createElement('img');
     img.src    = 'images/Minus.png';
     img.alt    = 'Minus button';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
 	} else if (arg === 'STICK') {
   const img = document.createElement('img');
     img.src    = 'images/Dpad.png';
     img.alt    = 'D-Pad';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
 	} else if (arg === 'PAD') {
   const img = document.createElement('img');
     img.src    = 'images/Wiimote.png';
     img.alt    = 'Wii remote';
     img.style.width  = '4em';
-    img.style.height = '1em';
+    img.style.height  = '1em';
     currentContainer().appendChild(img);
   } else if (arg === 'PAD_1') {
   const img = document.createElement('img');
     img.src    = 'images/1.png';
     img.alt    = '1 button';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
   } else if (arg === 'PAD_2') {
   const img = document.createElement('img');
     img.src    = 'images/2.png';
     img.alt    = '2 button';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height  = '1.5em';
     currentContainer().appendChild(img);
   } else if (arg === 'PAD_A') {
   const img = document.createElement('img');
     img.src    = 'images/A.png';
     img.alt    = 'A button';
-    img.style.width  = '1em';
-    img.style.height = '1em';
+    img.style.width  = '1.5em';
+    img.style.height = '1.5em';
     currentContainer().appendChild(img);
   } else {
     let displayText;
@@ -606,7 +617,7 @@ if (iconMatch) {
 
   function generatePages(text) {
 {
-  // Convert null bytes to real line breaks before any formatting/page logic.
+  // Convert null bytes to line breaks before any formatting/page logic.
   text = text.replace(/\u0000/g, '\n');
 
   // Remove pure tag lines from visual output while preserving their effects.
@@ -659,7 +670,7 @@ text = text
 
 const underscoreWordRegex = /\b(?!PAD_|AC_|se_|adv_|ICON_|AN_)\w+_\w*\b/;
 const pageBreakToken = "[[SPM_PAGE_BREAK]]";
- 
+
 function isUnderscoreAdjacentThroughTagsAndWhitespace(fullText, tagStart, tagEnd) {
   const left = fullText.slice(0, tagStart).replace(/(?:[\s\u0000]|<[^>]+>)*$/g, "");
   const right = fullText.slice(tagEnd).replace(/^(?:[\s\u0000]|<[^>]+>)*/g, "");
@@ -682,7 +693,7 @@ text = text.replace(/<p>/gi, (tag, offset, fullText) => {
   return pageBreakToken;
 });
 
-// Split on explicit <p>-based breaks and on real underscore-words.
+// Split on explicit <p>-based breaks and on underscore-words.
 // <p> keeps text effect state; underscore-word splits reset state.
 const segments = [];
 text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
@@ -708,7 +719,7 @@ text.split(pageBreakToken).forEach((chunk, chunkIdx) => {
   majoFlags = [];
 
 
-// Process each segment, collapsing <ph> lines to zero height
+// Process each segment
 let parserState = createDefaultParserState();
 segments.forEach(({ raw, splitType }) => {
   if (splitType === 'underscore' || splitType === 'start') {
@@ -716,22 +727,11 @@ segments.forEach(({ raw, splitType }) => {
   }
 
   const trimmed = raw.trim();
-  const { fragment, fairy, kanban, system, diary, clear, majo, ph, endState } = parseCustomTags(trimmed, parserState);
+  const { fragment, fairy, kanban, system, diary, clear, majo, endState } = parseCustomTags(trimmed, parserState);
   parserState = endState;
+  pages.push(fragment);
 
-  if (ph) {
-    // Wrap the placeholder-only content so it takes zero height
-    const wrapper = document.createElement('div');
-    wrapper.style.height = '0';
-    wrapper.style.overflow = 'hidden';
-    wrapper.appendChild(fragment);
-    pages.push(wrapper);
-  } else {
-    // Normal line: keep the parsed fragment as-is
-    pages.push(fragment);
-  }
-
-  // Push flags (keep flags.ph if needed later, though it's only for collapsing)
+  // Push flags
   fairyFlags.push(fairy);
   kanbanFlags.push(kanban);
   systemFlags.push(system);
