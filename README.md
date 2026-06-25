@@ -23,7 +23,7 @@ This is a website I made just to mess around with random internet stuff. Want me
 * [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
 
 ## Emoji Simulator
-A fun "virtual life simulator" made by Nicky Case, with a few additions of my own. Try making your own simulations! [thecomputercrasher.github.io/emoji-sim](https://thecomputercrasher.github.io/emoji-sim)
+A fun "virtual life simulator" made by Nicky Case, with a few additions of my own. Try making your own simulations! [thecomputercrasher.github.io/emoji-sim](https://thecomputercrasher.github.io/emoji-sim-advanced)
 
 ## Explaining what happened in Kinger's console in TADC: Episode 8
 Spoiler-free for episode 9, with optional episode 9 additions at the very end. [thecomputercrasher.github.io/kinger-computer-explained](https://thecomputercrasher.github.io/kinger-computer-explained)
