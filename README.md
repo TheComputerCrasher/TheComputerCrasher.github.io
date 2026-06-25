@@ -13,14 +13,14 @@ This is a website I made just to mess around with random internet stuff. Want me
 # Things
 
 ## Super Paper Mario utilities
-* [:SPM custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
-* [:SPM custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
+* [SPM custom songs tutorial](https://thecomputercrasher.github.io/spm-custom-songs)
+* [SPM custom text tutorial](https://thecomputercrasher.github.io/spm-custom-text)
 * [SPM text editor app](https://github.com/Luma48/Flint) - Flint by [Luma48](https://github.com/Luma48)
 * [TTYD modding tool](https://github.com/Jemaroo/MagicalMap) (which can kinda-sorta be used for SPM text editing) - Magical Map by [Jemaroo](https://github.com/Jemaroo)
 * [SPM text editor site](https://thecomputercrasher.github.io/spm-text-editor) - Web version by me, not as good as the apps since it was just made for fun and was vibe-coded
 
 ## Web design project: Grizzco business site
-* [:thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
+* [thecomputercrasher.github.io/grizzco](https://thecomputercrasher.github.io/grizzco/index.html)
 
 ## Emoji Simulator
 A fun "virtual life simulator" made by Nicky Case, with a few additions of my own. Try making your own simulations! [thecomputercrasher.github.io/emoji-sim](https://thecomputercrasher.github.io/emoji-sim)
