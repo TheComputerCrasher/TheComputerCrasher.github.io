@@ -6,6 +6,7 @@ Nutshell.setOptions({
     dontEmbedHeadings: true,
 });
 </script>
+<script src="https://keepandroidopen.org/banner.js?hidebanner=off&animation=off"></script>
 
 # Welcome!
 This is a website I made just to mess around with random internet stuff. Want me to add something to the site? Just ask!
